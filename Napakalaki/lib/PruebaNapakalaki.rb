@@ -2,4 +2,10 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-puts "Hello World"
+require 'Prize.rb'
+require 'BadConsequence.rb'
+require 'Monster.rb'
+
+#Creación Prize de prueba...
+reward = Prize.new(2, 1)
+puts reward.to_s
