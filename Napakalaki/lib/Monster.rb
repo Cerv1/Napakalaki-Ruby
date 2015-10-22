@@ -11,4 +11,9 @@ class Monster
         @reward=reward
         @mal_rollo=mal_rollo
   end
+  
+  def to_s
+    "Nombre: #{name} \n Nivel: #{combat_level} \n Recompensa: #{reward} \n Mal Rollo: #{mal_rollo}"
+  end
+  
 end
