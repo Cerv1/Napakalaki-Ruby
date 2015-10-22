@@ -13,7 +13,7 @@ class Monster
   end
   
   def to_s
-    "Nombre: #{name} \n Nivel: #{combat_level} \n Recompensa: #{reward} \n Mal Rollo: #{mal_rollo}"
+    "Nombre: #{@name} \n Nivel: #{@combat_level} \n Recompensa: #{@reward} \n Mal Rollo: #{@mal_rollo}"
   end
   
 end
