@@ -21,9 +21,9 @@ class BadConsequence
         @specificVisibleTreasures=someSpecificVisibleTreasures
   end
   
-  #BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-  #BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-  #BadConsequence.newDeath(aText)
+  BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
+  BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
+  BadConsequence.newDeath(aText)
   
   def to_s
     "Descripción del mal rollo: #{@text} \n Niveles perdidos: #{@level} \n Numero de tesoros visibles #{@nVisibleTreasures}

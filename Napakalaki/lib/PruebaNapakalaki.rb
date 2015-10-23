@@ -6,6 +6,5 @@ require 'Prize.rb'
 require 'BadConsequence.rb'
 require 'Monster.rb'
 
-#Creación Prize de prueba...
 reward = Prize.new(2, 1)
 puts reward.to_s
