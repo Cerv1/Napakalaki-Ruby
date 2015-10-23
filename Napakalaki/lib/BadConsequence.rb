@@ -2,6 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+require 'Prize.rb'
+require 'Monster.rb'
+
 class BadConsequence
   
   attr_accessor:text, :level,  :nVisibleTreasures, :nHiddenTreasures, :death,

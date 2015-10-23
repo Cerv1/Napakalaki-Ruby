@@ -2,6 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+require 'Prize.rb'
+require 'BadConsequence.rb'
+
 class Monster
   attr_accessor:name, :combat_level, :reward, :mal_rollo
   
