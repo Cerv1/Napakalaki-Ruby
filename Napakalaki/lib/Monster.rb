@@ -1,3 +1,4 @@
+#encoding: utf-8
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
@@ -16,7 +17,7 @@ class Monster
   end
   
   def to_s
-    "Nombre: #{@name} \n Nivel: #{@combat_level} \n Recompensa: #{@reward} \n Mal Rollo: #{@mal_rollo}"
+    "Nombre: #{@name} \n Nivel: #{@combat_level} \n  #{@reward} \n  #{@mal_rollo}"
   end
   
 end
