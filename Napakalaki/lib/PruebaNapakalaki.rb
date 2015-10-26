@@ -30,14 +30,14 @@ monsters << Monster.new("3 Byakhees de bonanza", 8, P1, BC1)
 
 P2 = Prize.new(1, 1)
 BC2 = BadConsequence.newLevelSpecificTreasures("Embobados con el lindo primigenio te descartas de tu casco visible", 0, 
-            TreasureKind::HELMET, TreasureKind)
+            TreasureKind::HELMET, Array.new)
  monsters << Monster.new("Chibithulhu", 2, P2, BC2)                                                                                          
   
 #---------------------------------------------------------------------------------------------------------------------------------#
 
 P3 = Prize.new(1, 1)
 BC3 = BadConsequence.newLevelSpecificTreasures("El primordial bostezo contagioso. Pierdes el calzado visible. ", 0,
-                TreasureKind::SHOES, TreasureKind)
+                TreasureKind::SHOES, Array.new)
 monsters << Monster.new("El sopor de Dunwich", 2, P3, BC3)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -56,14 +56,14 @@ monsters << Monster.new("El gorrón en el umbral ", 10, P5, BC5)
 #---------------------------------------------------------------------------------------------------------------------------------#
 
 P6 = Prize.new(2, 1)
-BC6 = BadConsequence.newLevelSpecificTreasures("Pierdes la armadura visible. ",0 , TreasureKind::ARMOR, TreasureKind)
+BC6 = BadConsequence.newLevelSpecificTreasures("Pierdes la armadura visible. ",0 , TreasureKind::ARMOR,  Array.new)
 monsters << Monster.new("H.P Munchcraft ", 6, P6, BC6)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
 
 P7 = Prize.new(1, 1)
 BC7 = BadConsequence.newLevelSpecificTreasures("Sientes bichos bajo la ropa. Descarta la armadura visible. ", 0, 
-              TreasureKind::ARMOR, TreasureKind)
+              TreasureKind::ARMOR,  Array.new)
 monsters << Monster.new("Bichgooth " , 2, P7, BC7)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -94,7 +94,7 @@ monsters << Monster.new("Semillas Cthulhu ", 4, P11, BC11)
 
 P12 = Prize.new(2, 1)
 BC12 = BadConsequence.newLevelSpecificTreasures("Te intentas escaquear. Pierdes una mano visible. " , 0, 
-                  TreasureKind::ONEHAND, TreasureKind)
+                  TreasureKind::ONEHAND,  Array.new)
 monsters << Monster.new("Dameargo ", 1, P12, BC12)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -119,14 +119,14 @@ monsters << Monster.new("Familia feliz ", 1, P15, BC15)
 
 P16 = Prize.new(2, 1)
 BC16 = BadConsequence.newLevelSpecificTreasures("La quinta directiva primaria te obliga a perder 2 niveles y un
-                tesoro 2 manos visible. ", 2, TreasureKind::BOTHHANDS, TreasureKind)
+                tesoro 2 manos visible. ", 2, TreasureKind::BOTHHANDS,  Array.new)
 monsters << Monster.new("Roboggoth ", 8, P16, BC16)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
 
 P17 = Prize.new(1, 1)
 BC17  = BadConsequence.newLevelSpecificTreasures("Te asusta en la noche. Pierdes un casco visible. ", 0, 
-                TreasureKind::HELMET, TreasureKind)
+                TreasureKind::HELMET,  Array.new)
 monsters << Monster.new("El espía ", 5, P17, BC17)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -139,7 +139,7 @@ monsters << Monster.new("El lenguas ", 20, P18, BC18)
 
 P19 = Prize.new(1, 1)
 BC19 = BadConsequence.newLevelSpecificTreasures("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos. ", 
-                3, TreasureKind::BOTHHANDS, TreasureKind)
+                3, TreasureKind::BOTHHANDS,  Array.new)
             monsters << Monster.new("Bicéfalo ", 20, P19, BC19)
             
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -174,7 +174,16 @@ BC19 = BadConsequence.newLevelSpecificTreasures("Te faltan manos para tanta cabe
     end
 
         
-
+ monsters.each do |monstruo|
+        if(monstruo.mal_rollo.specificHiddenTreasures == TreasureKind::ONEHAND)
+            puts monstruo.to_s
+        else if(monstruo.mal_rollo.specificVisibleTreasures == TreasureKind::ONEHAND)
+            puts monstruo.to_s
+        end
+        end
+            
+ end
+ 
 
 
 
