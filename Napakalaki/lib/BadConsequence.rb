@@ -15,26 +15,25 @@ class BadConsequence
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
                 someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
-        @text=aText
-        @level=someLevels
-        @nVisibleTreasures=someVisibleTreasures
-        @nHiddenTreasures=someHiddenTreasures
-        @death=death
-        @specificHiddenTreasures=someSpecificHiddenTreasures
-        @specificVisibleTreasures=someSpecificVisibleTreasures
+      @text=aText
+      @level=someLevels
+      @nVisibleTreasures=someVisibleTreasures
+      @nHiddenTreasures=someHiddenTreasures
+      @death=death
+      @specificHiddenTreasures=someSpecificHiddenTreasures
+      @specificVisibleTreasures=someSpecificVisibleTreasures
   end
   
   def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-         new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
+    new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
   end
   
   def BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-        new(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
+    new(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
   end
   
   def BadConsequence.newDeath(aText)
-       new(aText, 0, -1, -1, Array.new, Array.new , true)
-           
+    new(aText, 0, -1, -1, Array.new, Array.new , true)
   end
   
   def to_s
