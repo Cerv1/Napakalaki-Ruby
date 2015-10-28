@@ -31,7 +31,7 @@ monsters << Monster.new("3 Byakhees de bonanza", 8, P1, BC1)
 P2 = Prize.new(1, 1)
 BC2 = BadConsequence.newLevelSpecificTreasures("Embobados con el lindo primigenio te descartas de tu casco visible", 0, 
             TreasureKind::HELMET, Array.new)
- monsters << Monster.new("Chibithulhu", 2, P2, BC2)                                                                                          
+monsters << Monster.new("Chibithulhu", 2, P2, BC2)                                                                                          
   
 #---------------------------------------------------------------------------------------------------------------------------------#
 
@@ -140,7 +140,7 @@ monsters << Monster.new("El lenguas ", 20, P18, BC18)
 P19 = Prize.new(1, 1)
 BC19 = BadConsequence.newLevelSpecificTreasures("Te faltan manos para tanta cabeza. Pierdes 3 niveles y tus tesoros visibles de las manos. ", 
                 3, TreasureKind::BOTHHANDS,  Array.new)
-            monsters << Monster.new("Bicéfalo ", 20, P19, BC19)
+monsters << Monster.new("Bicéfalo ", 20, P19, BC19)
             
 #---------------------------------------------------------------------------------------------------------------------------------#
 
