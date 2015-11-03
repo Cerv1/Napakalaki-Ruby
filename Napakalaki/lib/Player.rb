@@ -2,9 +2,10 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 @@MAXLEVEL=10
+package NapakalakiGame
 
 class Player
-  attr_reader:name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures
+  attr_reader:name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures, :pendingBadConsequence
   
   def initialize(name)
     @name=name
