@@ -16,6 +16,4 @@ class Treasure
     @type=t  
   end
   
-
- 
 end

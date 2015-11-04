@@ -4,12 +4,9 @@
 # and open the template in the editor.
 package NapakalakiGame
 
-require 'Monster.rb'
-require 'BadConsequence.rb'
-
 class Prize
   
-  attr_accessor:treasures, :level
+  attr_reader:treasures, :level
   
   def initialize(treasures, level)
     @treasures = treasures
@@ -20,5 +17,4 @@ class Prize
     "Tesoros ganados: #{@treasures} \n Niveles ganados: #{@level}"
   end
     
-  
 end

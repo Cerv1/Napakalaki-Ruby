@@ -8,7 +8,7 @@ require 'Prize.rb'
 require 'BadConsequence.rb'
 
 class Monster
-  attr_accessor:name, :combat_level, :reward, :mal_rollo
+  attr_reader :name, :combat_level, :reward, :mal_rollo
   
   def initialize(name, combat_level, reward, mal_rollo)
         @name=name

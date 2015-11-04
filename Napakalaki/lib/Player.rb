@@ -4,15 +4,20 @@
 @@MAXLEVEL=10
 package NapakalakiGame
 
+require 'Treasure.rb'
+require 'BadConsequence.rb'
+
 class Player
-  attr_reader:name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures, :pendingBadConsequence
+  
+  attr_reader :name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures
+  attr_writer :pendingBadConsequence, :enemy
   
   def initialize(name)
     @name=name
   end
   
   def bringToLife()
-    
+    @dead=false;
   end
   
   def incrementLevels(i)
@@ -22,38 +27,34 @@ class Player
   def decrementLevels(i)
     @level=@level-i
   end
-  
-  def setPendingBadConsequence(b)
-    
+
+  def applyPrize(m)
+
   end
 
-def applyPrize(m)
+  def applyBadConsequence(m)
 
-end
+  end
 
-def applyBadConsequence(m)
+  def canMakeTreasureVisible(t)
 
-end
+  end
 
-def canMakeTreasureVisible(t)
+  def howManyVisibleTreasures(tkind)
 
-end
+  end
 
-def howManyVisibleTreasures(tkind)
+  def dieIfNoTreasures()
 
-end
+  end
 
-def dieIfNoTreasures()
+  def isDead()
 
-end
+  end
 
-def isDead()
+  def combat(m)
 
-end
-
-def combat(m)
-
-end
+  end
 
 def makeTreasureVisible(t)
 
@@ -76,10 +77,6 @@ def initTreasures()
 end
 
 def stealTreasure()
-  
-end
-
-def setEnemyPlayer(enemy)
   
 end
 
