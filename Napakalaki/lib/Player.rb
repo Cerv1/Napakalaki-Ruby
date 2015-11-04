@@ -2,7 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 @@MAXLEVEL=10
-package NapakalakiGame
+module NapakalakiGame
 
 require 'Treasure.rb'
 require 'BadConsequence.rb'
@@ -100,4 +100,5 @@ def discardAllTreasures()
   
 end
 
+end
 end

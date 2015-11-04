@@ -2,7 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-package NapakalakiGame
+require 'singleton'
+
+module NapakalakiGame
 
 require 'Player.rb'
 require 'CardDealer.rb'
@@ -11,7 +13,18 @@ require 'Monster.rb'
 
 class Napakalaki
   
+  include Singleton
+  
+  @@instance=nil
+  
   attr_reader :currentPlayer, :players, :currentMonster, :dealer
+  
+  def self.getInstance
+    if(@@instance==nil)
+      @@instance=Napakalaki.new
+    end
+    return @@instance 
+  end
   
   def initialize
     
@@ -61,4 +74,5 @@ class Napakalaki
     
   end
   
+end
 end
