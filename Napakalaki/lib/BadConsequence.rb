@@ -44,3 +44,4 @@ class BadConsequence
   end
     
 end
+end
