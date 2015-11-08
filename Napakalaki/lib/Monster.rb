@@ -15,8 +15,7 @@ class Monster
         @name=name
         @combat_level=combat_level
         @mal_rollo=mal_rollo
-        @levels=reward.level
-        @treasures=reward.treasures
+        @reward=reward
   end
   
   def to_s

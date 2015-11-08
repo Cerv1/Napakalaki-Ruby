@@ -18,32 +18,16 @@ class Napakalaki
   @@instance=nil
   
   attr_reader :currentPlayer, :players, :currentMonster, :dealer
+
+  def initialize
+    
+  end
   
   def self.getInstance
     if(@@instance==nil)
       @@instance=Napakalaki.new
     end
     return @@instance 
-  end
-  
-  def initialize
-    
-  end
-  
-  def initPlayers(names)
-    
-  end
-  
-  def nextPlayer()
-    
-  end
-  
-  def nextTurnAllowed()
-    
-  end
-  
-  def setEnemies()
-    
   end
   
   def developCombat()
@@ -71,6 +55,24 @@ class Napakalaki
   end
   
   def endOfGame(result)
+    
+  end
+  
+  private
+    
+  def initPlayers(names)
+    
+  end
+  
+  def nextPlayer()
+    
+  end
+  
+  def nextTurnAllowed()
+    
+  end
+  
+  def setEnemies()
     
   end
   
