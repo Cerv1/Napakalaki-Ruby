@@ -25,11 +25,11 @@ class NapakalakiGame::CardDealer
     return @@instance 
   end
   
-  def initialize(unT, usT, unM, usM)
-    @unusedTreasures=unT
-    @usedTreasures=usT
-    @unusedMonsters=unM
-    @usedMonsters=usM   
+  def initialize()
+    @unusedTreasures=Array.new
+    @usedTreasures=Array.new
+    @unusedMonsters=Array.new
+    @usedMonsters=Array.new 
   end
    
   def nextTreasure()
@@ -55,7 +55,7 @@ class NapakalakiGame::CardDealer
   end
   
  
-  private
+ private
   
   def initTreasureCardDeck()
     
