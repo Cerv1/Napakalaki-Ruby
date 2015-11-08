@@ -11,6 +11,8 @@ class BadConsequence
     
   private_class_method:new
   
+  @@MAXTREASURES=10
+  
   attr_accessor:text, :level,  :nVisibleTreasures, :nHiddenTreasures, :death,
                :specificHiddenTreasures, :specificVisibleTreasures
   
