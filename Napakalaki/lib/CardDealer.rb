@@ -183,20 +183,15 @@ class NapakalakiGame::CardDealer
            3, TreasureKind::BOTHHANDS,  Array.new)
     monsters << Monster.new("Bicéfalo ", 20, P19, BC19)
      
-    
-    monsters.each do |prueba|  
-     puts prueba.to_s
-    end
   end
   
-    
-   
+ 
   def shuffleTreasures()
-    
+    unusedTreasures.shuffle!
   end
   
   def shuffleMonsters()
-    
+    unusedMonsters.shuffle!
   end
   
  end
