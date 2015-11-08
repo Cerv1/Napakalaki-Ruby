@@ -146,6 +146,5 @@ class Player
     @canISteal=false
   end
   
-e nd
-
+end
 end
