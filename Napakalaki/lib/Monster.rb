@@ -9,13 +9,14 @@ require 'BadConsequence.rb'
 
 class Monster
   
-  attr_reader :name, :combat_level, :mal_rollo, :treasures
+  attr_reader :name, :combat_level, :mal_rollo, :reward
   
-  def initialize(name, combat_level, mal_rollo, treasures)
+  def initialize(name, combat_level, mal_rollo, reward)
         @name=name
         @combat_level=combat_level
         @mal_rollo=mal_rollo
-        @treasures=treasures
+        @levels=reward.level
+        @treasures=reward.treasures
   end
   
   def to_s

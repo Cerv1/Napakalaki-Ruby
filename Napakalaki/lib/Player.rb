@@ -66,49 +66,49 @@ class Player
 
   end
 
-def makeTreasureVisible(t)
+  def makeTreasureVisible(t)
 
-end
+  end
 
-def discardVisibleTreasure()
+  def discardVisibleTreasure()
 
-end
+  end
 
-def discardHiddenTreasure()
+  def discardHiddenTreasure()
 
-end
+  end
 
-def validState()
+  def validState()
 
-end
+  end
 
-def initTreasures()
+  def initTreasures()
 
-end
+  end
 
-def stealTreasure()
+  def stealTreasure()
   
-end
+  end
 
-def giveMeATreasure()
+  def giveMeATreasure()
   
-end
+  end
 
-def canISteal()
+  def canISteal()
   
-end
+  end
 
-def canYouGiveMeATreasure()
+  def canYouGiveMeATreasure()
   
-end
+  end
 
-def haveStolen()
+  def haveStolen()
   
-end
+  end
 
-def discardAllTreasures()
+  def discardAllTreasures()
   
-end
+  end
 
 end
 end
