@@ -58,68 +58,100 @@ class NapakalakiGame::CardDealer
   private
   
   def initTreasureCardDeck()
+    
     @T1 = Treasure.new("¡Sí mi amo!", 0, 4, TreasureKind::HELMET);
     @unusedTreasures << T1
+    
     @T2 = Treasure.new("Botas de investigación", 0, 3, TreasureKind::SHOES)
     @unusedTreasures << T2
+    
     @T3 = Treasure.new("Capucha de Cthulhu", 0, 3, TreasureKind::HELMET)
     @unusedTreasures << T3
+    
     @T4 = Treasure.new("A prueba de babas", 0, 2, TreasureKind::ARMOR)
     @unusedTreasures << T4
+    
     @T5 = Treasure.new("Botas de lluvia ácida", 0, 1, TreasureKind::BOTHHANDS)
     @unusedTreasures << T5
+    
     @T6 = Treasure.new("Casco minero", 0, 2, TreasureKind::HELMET)
     @unusedTreasures << T6
+    
     @T7 = Treasure.new("Ametralladora Thompson", 0, 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << T7
+    
     @T8 = Treasure.new("Camiseta de la UGR", 0, 1, TreasureKind::ARMOR)
     @unusedTreasures << T8
+    
     @T9 = Treasure.new("Clavo de rail ferroviario", 0, 3, TreasureKind::ONEHAND)
     @unusedTreasures << T9
+    
     @T10 = Treasure.new("Cuchillo de sushi arcano", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T10
+    
     @T11 = Treasure.new("Fez alópodo", 0, 3, TreasureKind::HELMET)
     @unusedTreasures << T11
+    
     @T12 = Treasure.new("Hacha prehistórica", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T12
+    
     @T13 = Treasure.new("El aparato del Pr. Tesla", 0, 4, TreasureKind::ARMOR)
     @unusedTreasures << T13
+    
     @T14 = Treasure.new("Gaita", 0, 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << T14
+    
     @T15 = Treasure.new("Insecticida", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T15
+    
     @T16 = Treasure.new("Escopeta de 3 cañones", 0, 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << T16
+    
     @T17 = Treasure.new("Garabato místico", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T17
+    
     @T18 = Treasure.new("La rebeca metálica", 0, 2, TreasureKind::ARMOR)
     @unusedTreasures << T18
+    
     @T19 = Treasure.new("Lanzallamas", 0, 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << T19
+    
     @T20 = Treasure.new("Necrocomicón", 0, 1, TreasureKind::ONEHAND)
     @unusedTreasures << T20
+    
     @T21 = Treasure.new("Necronomicón", 0, 5, TreasureKind::BOTHHANDS)
     @unusedTreasures << T21
+    
     @T22 = Treasure.new("Linterna a 2 manos", 0, 3, TreasureKind::BOTHHANDS)
     @unusedTreasures << T22
+    
     @T23 = Treasure.new("Necrognomicón", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T23
+    
     @T24 = Treasure.new("Necrotelecom", 0, 2, TreasureKind::HELMET)
     @unusedTreasures << T24
+    
     @T25 = Treasure.new("Mazo de los antiguos", 0, 3, TreasureKind::ONEHAND)
     @unusedTreasures << T25
+    
     @T26 = Treasure.new("Necroplayboycón", 0, 3, TreasureKind::ONEHAND)
     @unusedTreasures << T26
+    
     @T27 = Treasure.new("Porra preternatural", 0, 2, TreasureKind::ONEHAND)
     @unusedTreasures << T27
+    
     @T28 = Treasure.new("Shogulador", 0, 1, TreasureKind::BOTHHANDS)
     @unusedTreasures << T28
+    
     @T29 = Treasure.new("Varita de atizamiento", 0, 3, TreasureKind::ONEHAND)
     @unusedTreasures << T29
+    
     @T30 = Treasure.new("Tentáculo de pega", 0, 2, TreasureKind::HELMET)
     @unusedTreasures << T30
+    
     @T31 = Treasure.new("Zapato deja-amigos", 0, 1, TreasureKind::SHOES)
-    @unusedTreasures << T31     
+    @unusedTreasures << T31  
+    
   end
   
   def initMonsterCardDeck()
