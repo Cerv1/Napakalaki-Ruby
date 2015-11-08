@@ -9,13 +9,12 @@ require 'BadConsequence.rb'
 
 class Monster
   
-  attr_reader :name, :combat_level, :mal_rollo, :levels, :treasures
+  attr_reader :name, :combat_level, :mal_rollo, :treasures
   
-  def initialize(name, combat_level, mal_rollo, levels, treasures)
+  def initialize(name, combat_level, mal_rollo, treasures)
         @name=name
         @combat_level=combat_level
         @mal_rollo=mal_rollo
-        @levels=levels
         @treasures=treasures
   end
   
@@ -26,4 +25,5 @@ class Monster
   end
   
 end
+
 end

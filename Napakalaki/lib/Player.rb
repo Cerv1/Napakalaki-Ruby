@@ -14,6 +14,12 @@ class Player
   
   def initialize(name)
     @name=name
+    @level=0
+    @dead=false
+    @canISteal=false
+    @hiddenTreasures=Array.new
+    @visibleTreasures=Array.new
+    @pendingBadConsequence=Array.new
   end
   
   def bringToLife()
@@ -25,7 +31,11 @@ class Player
   end
   
   def decrementLevels(i)
-    @level=@level-i
+    if(level-i<=0)
+      @level=@level-i
+    else
+      @level=0 
+    end
   end
 
   def applyPrize(m)

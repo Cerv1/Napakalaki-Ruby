@@ -17,9 +17,16 @@ class Dice
     return @@instance 
   end
   
+  def initialize()
+    self.nextNumber()
+  end
+  
   def nextNumber()
     return 1+rand(6)
   end
   
+  
 end
+
+
 end
