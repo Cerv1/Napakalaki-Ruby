@@ -117,16 +117,12 @@ class Player
     total_visibles=0
     visibleTreasures.each do |vT|
       if(vT.type == tKind)
-        total_visibles++
+        total_visibles+=1
       end
-    end
-      
+    end     
       return total_visibles
       end
       
-    end
-
-  end
 
   def dieIfNoTreasures()
     if(hiddenTreasures.empty? && visibleTreasures.empty?)
