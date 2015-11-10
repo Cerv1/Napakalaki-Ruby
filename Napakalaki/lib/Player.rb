@@ -34,7 +34,8 @@ class Player
   end
 
   def makeTreasureVisible(t)
-
+    @hiddenTreasures.delete(t)
+    @visibleTreasures.add(t)
   end
 
   def discardVisibleTreasure()
@@ -79,8 +80,11 @@ class Player
   def getCombatLevel()
     total=level
     i=0
-    while i<visibleTreasures.size
-      total+=visibleTreasures[i].getBonus  
+    while i<@visibleTreasures.size
+      total+=@visibleTreasures[i].getBonus  
+    end
+    while i<@hiddenTreasures.size
+      total+=@hiddenTreasures[i].getBonus
     end
      total
   end
@@ -98,10 +102,9 @@ class Player
   end
   
   def setPendingBadConsequence(b)
-    @pendingBadConsequence=b
+    @pendingBadConsequence.add(b)
   end
    
-
   def applyPrize(m)
     @level+=m.levels
   end
@@ -114,17 +117,16 @@ class Player
 
   end
 
-  def howManyVisibleTreasures(tkind)
+  def howManyVisibleTreasures(tKind)
     total_visibles=0
-    visibleTreasures.each do |vT|
+    @visibleTreasures.each do |vT|
       if(vT.type == tKind)
         total_visibles+=1
       end
     end     
-      return total_visibles
-      end
+    total_visibles
+  end
       
-
   def dieIfNoTreasures()
     if(hiddenTreasures.empty? && visibleTreasures.empty?)
       @dead=true
