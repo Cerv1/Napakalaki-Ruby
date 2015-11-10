@@ -21,7 +21,8 @@ class Player
     @canISteal=false
     @hiddenTreasures=Array.new
     @visibleTreasures=Array.new
-    @pendingBadConsequence=Array.new
+    @pendingBadConsequence=nil
+    @enemy=nil
   end
 
   def isDead()
@@ -29,7 +30,7 @@ class Player
   end
 
   def combat(m)
-
+    
   end
 
   def makeTreasureVisible(t)
