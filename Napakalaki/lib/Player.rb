@@ -101,15 +101,15 @@ class Player
   end
   
   def setPendingBadConsequence(b)
-    @pendingBadConsequence << b
+    @pendingBadConsequence=b
   end
    
   def applyPrize(m)
-    @level+=m.levels
+    
   end
 
   def applyBadConsequence(m)
-    @pendingBadConsequence << m
+    
   end
   
   def canMakeTreasureVisible(t)
