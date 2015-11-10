@@ -4,8 +4,8 @@
 # and open the template in the editor.
 module NapakalakiGame
 
-require 'Prize.rb'
-require 'Monster.rb'
+require_relative 'Prize.rb'
+require_relative 'Monster.rb'
 
 class BadConsequence
     
@@ -25,6 +25,18 @@ class BadConsequence
       @death=death
       @specificHiddenTreasures=someSpecificHiddenTreasures
       @specificVisibleTreasures=someSpecificVisibleTreasures
+  end
+  
+  def isEmpty
+    if(@nHiddenTreasures == -1 && @nHiddenTreasures == -1)
+      if(@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? && @level==0 && @death==false)
+        return true
+      end
+      else if(@nHiddenTreasures==0 && @nVisibleTreasures == 0 && @level==0 && @death == false )
+          return true
+      end
+    end
+    return false
   end
   
   def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
