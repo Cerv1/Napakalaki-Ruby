@@ -101,7 +101,7 @@ class Player
   end
   
   def setPendingBadConsequence(b)
-    @pendingBadConsequence.add(b)
+    @pendingBadConsequence << b
   end
    
   def applyPrize(m)

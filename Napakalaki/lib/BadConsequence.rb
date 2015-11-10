@@ -4,8 +4,8 @@
 # and open the template in the editor.
 module NapakalakiGame
 
-require 'Prize.rb'
-require 'Monster.rb'
+require_relative 'Prize.rb'
+require_relative 'Monster.rb'
 
 class BadConsequence
     

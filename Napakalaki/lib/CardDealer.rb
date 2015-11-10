@@ -3,16 +3,16 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require 'singleton'
-require 'Prize.rb'
-require 'Monster.rb'
-require 'BadConsequence.rb'
-require 'TreasureKind.rb'
+require_relative 'singleton'
+require_relative 'Prize.rb'
+require_relative 'Monster.rb'
+require_relative 'BadConsequence.rb'
+require_relative 'TreasureKind.rb'
 
 module NapakalakiGame
 
 
-class NapakalakiGame::CardDealer
+class CardDealer
   
   include Singleton
 
