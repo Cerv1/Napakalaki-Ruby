@@ -5,6 +5,7 @@
 module NapakalakiGame
 
 require_relative 'TreasureKind.rb'
+
 class Treasure
   
   attr_reader:name, :gold, :bonus, :type

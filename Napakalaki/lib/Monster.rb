@@ -33,5 +33,4 @@ class Monster
   end
   
 end
-
 end

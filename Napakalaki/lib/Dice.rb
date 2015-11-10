@@ -3,6 +3,7 @@
 # and open the template in the editor.
 
 require_relative 'singleton'
+
 module NapakalakiGame
   
 class Dice

@@ -6,10 +6,10 @@ require 'singleton'
 
 module NapakalakiGame
 
-require 'Player.rb'
-require 'CardDealer.rb'
-require 'CombatResult.rb'
-require 'Monster.rb'
+require_relative 'Player.rb'
+require_relative 'CardDealer.rb'
+require_relative 'CombatResult.rb'
+require_relative 'Monster.rb'
 
 class Napakalaki
   
