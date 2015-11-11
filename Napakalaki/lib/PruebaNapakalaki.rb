@@ -4,10 +4,12 @@
 # and open the template in the editor.
 module NapakalakiGame
 
+ 
 require_relative 'Prize.rb'
 require_relative 'BadConsequence.rb'
 require_relative 'Monster.rb'
 require_relative 'TreasureKind.rb'
+require_relative 'CardDealer.rb'
 
 reward = Prize.new(2, 1)
 #puts reward.to_s
@@ -22,9 +24,9 @@ monstruo=Monster.new("Prueba",2,reward,malrollo)
 
 monsters=Array.new
 
-P1 = Prize.new(2,1)
-BC1 = BadConsequence.newLevelNumberOfTreasures("Pierdes tu armadura visible y otra oculta", 0, 1, 1)
-monsters << Monster.new("3 Byakhees de bonanza", 8, P1, BC1)
+#P1 = Prize.new(2,1)
+#BC1 = BadConsequence.newLevelNumberOfTreasures("Pierdes tu armadura visible y otra oculta", 0, 1, 1)
+#monsters << Monster.new("3 Byakhees de bonanza", 8, P1, BC1)
 
 # Mostrar todos los monstruos que tengan un nivel de combate superior a 10.
     monsters.each do |monstruo|
@@ -65,4 +67,9 @@ monsters << Monster.new("3 Byakhees de bonanza", 8, P1, BC1)
         end
             
  end
+ 
+ cd = CardDealer.new
+ puts cd
+  
+  
 end

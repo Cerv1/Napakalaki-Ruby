@@ -3,7 +3,8 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require_relative 'singleton'
+require 'singleton'
+
 require_relative 'Prize.rb'
 require_relative 'Monster.rb'
 require_relative 'BadConsequence.rb'
