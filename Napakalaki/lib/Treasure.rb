@@ -8,11 +8,10 @@ require_relative 'TreasureKind.rb'
 
 class Treasure
   
-  attr_reader:name, :gold, :bonus, :type
+  attr_reader:name, :bonus, :type
   
-  def initialize(n,g,bonus,t)
+  def initialize(n,bonus,t)
     @name=n
-    @gold=g
     @bonus=bonus
     @type=t  
   end
