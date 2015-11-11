@@ -2,7 +2,8 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require 'singleton'
+require_relative 'singleton'
+
 module NapakalakiGame
   
 class Dice

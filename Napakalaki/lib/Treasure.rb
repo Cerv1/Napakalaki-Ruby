@@ -4,7 +4,8 @@
 # and open the template in the editor.
 module NapakalakiGame
 
-require 'TreasureKind.rb'
+require_relative 'TreasureKind.rb'
+
 class Treasure
   
   attr_reader:name, :gold, :bonus, :type

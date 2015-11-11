@@ -27,6 +27,18 @@ class BadConsequence
       @specificVisibleTreasures=someSpecificVisibleTreasures
   end
   
+  def isEmpty
+    if(@nHiddenTreasures == -1 && @nHiddenTreasures == -1)
+      if(@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? && @level==0 && @death==false)
+        return true
+      end
+      else if(@nHiddenTreasures==0 && @nVisibleTreasures == 0 && @level==0 && @death == false )
+          return true
+      end
+    end
+    return false
+  end
+  
   def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
     new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
   end

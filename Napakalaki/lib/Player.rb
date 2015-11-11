@@ -3,25 +3,26 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-
 module NapakalakiGame
 
-require 'Treasure.rb'
-require 'BadConsequence.rb'
+require_relative 'Treasure.rb'
+require_relative 'BadConsequence.rb'
 
 class Player
   @@MAXLEVEL=10
+  
   attr_reader :name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures
   attr_writer :pendingBadConsequence, :enemy
   
   def initialize(name)
     @name=name
-    @level=0
+    @level=1
     @dead=false
     @canISteal=false
     @hiddenTreasures=Array.new
     @visibleTreasures=Array.new
-    @pendingBadConsequence=Array.new
+    @pendingBadConsequence=nil
+    @enemy=nil
   end
 
   def isDead()
@@ -29,12 +30,12 @@ class Player
   end
 
   def combat(m)
-
+    
   end
 
   def makeTreasureVisible(t)
-    @hiddenTreasures.delete(t)
-    @visibleTreasures.add(t)
+    #@hiddenTreasures.delete(t)
+    #@visibleTreasures.add(t)
   end
 
   def discardVisibleTreasure()
@@ -46,7 +47,7 @@ class Player
   end
 
   def validState()
-    if(pendingBadConsquence.empty? && hiddenTreasures.size < 4)
+    if(pendingBadConsquence.isEmpty && hiddenTreasures.size <= 4)
       return true
     else
       return false
@@ -62,7 +63,7 @@ class Player
   end
 
   def canISteal()
-  
+    return @canISteal
   end
 
   def discardAllTreasures()
@@ -93,10 +94,10 @@ class Player
   end
   
   def decrementLevels(i)
-    if(@level-i<=0)
+    if(@level-i<=1)
       @level=@level-i
     else
-      @level=0 
+      @level=1 
     end
   end
   

@@ -4,8 +4,8 @@
 # and open the template in the editor.
 module NapakalakiGame
 
-require 'Prize.rb'
-require 'BadConsequence.rb'
+require_relative 'Prize.rb'
+require_relative 'BadConsequence.rb'
 
 class Monster
   
@@ -18,6 +18,14 @@ class Monster
         @reward=reward
   end
   
+  def getLevelsGained()
+    return @reward.level
+  end
+  
+  def getTreasuresGained()
+    return @reward.treasures
+  end
+  
   def to_s
     "Nombre: #{@name} \n Nivel: #{@combat_level} \n  
     Mal rollo: #{@mal_rollo} \n Niveles ganados: #{@levels}
@@ -25,5 +33,4 @@ class Monster
   end
   
 end
-
 end
