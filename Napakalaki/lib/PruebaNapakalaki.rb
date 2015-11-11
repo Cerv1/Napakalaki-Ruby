@@ -3,8 +3,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 module NapakalakiGame
-
- 
+  
 require_relative 'Prize.rb'
 require_relative 'BadConsequence.rb'
 require_relative 'Monster.rb'
@@ -68,8 +67,6 @@ monsters=Array.new
             
  end
  
- cd = CardDealer.new
- puts cd
-  
-  
+ cd1 = CardDealer.instance
+ 
 end

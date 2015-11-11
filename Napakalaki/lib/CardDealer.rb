@@ -9,6 +9,7 @@ require_relative 'Prize.rb'
 require_relative 'Monster.rb'
 require_relative 'BadConsequence.rb'
 require_relative 'TreasureKind.rb'
+require_relative 'Treasure.rb'
 
 module NapakalakiGame
 
@@ -46,103 +47,104 @@ class CardDealer
   end
   
  
- private
+# private
   
-  def initTreasureCardDeck()
+  def initTreasureCardDeck
     
-    t1 = Treasure.new("¡Sí mi amo!", 0, 4, TreasureKind::HELMET);
+    t1 = Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET);
     @unusedTreasures << t1
     
-    t2 = Treasure.new("Botas de investigación", 0, 3, TreasureKind::SHOES)
+    t2 = Treasure.new("Botas de investigación", 3, TreasureKind::SHOES)
     @unusedTreasures << t2
     
-    t3 = Treasure.new("Capucha de Cthulhu", 0, 3, TreasureKind::HELMET)
+    t3 = Treasure.new("Capucha de Cthulhu", 3, TreasureKind::HELMET)
     @unusedTreasures << t3
     
-    t4 = Treasure.new("A prueba de babas", 0, 2, TreasureKind::ARMOR)
+    t4 = Treasure.new("A prueba de babas", 2, TreasureKind::ARMOR)
     @unusedTreasures << t4
     
-    t5 = Treasure.new("Botas de lluvia ácida", 0, 1, TreasureKind::BOTHHANDS)
+    t5 = Treasure.new("Botas de lluvia ácida", 1, TreasureKind::BOTHHANDS)
     @unusedTreasures << t5
     
-    t6 = Treasure.new("Casco minero", 0, 2, TreasureKind::HELMET)
+    t6 = Treasure.new("Casco minero", 2, TreasureKind::HELMET)
     @unusedTreasures << t6
     
-    t7 = Treasure.new("Ametralladora Thompson", 0, 4, TreasureKind::BOTHHANDS)
+    t7 = Treasure.new("Ametralladora Thompson", 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << t7
     
-    t8 = Treasure.new("Camiseta de la UGR", 0, 1, TreasureKind::ARMOR)
+    t8 = Treasure.new("Camiseta de la UGR", 1, TreasureKind::ARMOR)
     @unusedTreasures << t8
     
-    t9 = Treasure.new("Clavo de rail ferroviario", 0, 3, TreasureKind::ONEHAND)
+    t9 = Treasure.new("Clavo de rail ferroviario", 3, TreasureKind::ONEHAND)
     @unusedTreasures << t9
     
-    t10 = Treasure.new("Cuchillo de sushi arcano", 0, 2, TreasureKind::ONEHAND)
+    t10 = Treasure.new("Cuchillo de sushi arcano", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t10
     
-    t11 = Treasure.new("Fez alópodo", 0, 3, TreasureKind::HELMET)
+    t11 = Treasure.new("Fez alópodo", 3, TreasureKind::HELMET)
     @unusedTreasures << t11
     
-    t12 = Treasure.new("Hacha prehistórica", 0, 2, TreasureKind::ONEHAND)
+    t12 = Treasure.new("Hacha prehistórica", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t12
     
-    t13 = Treasure.new("El aparato del Pr. Tesla", 0, 4, TreasureKind::ARMOR)
+    t13 = Treasure.new("El aparato del Pr. Tesla", 4, TreasureKind::ARMOR)
     @unusedTreasures << t13
     
-    t14 = Treasure.new("Gaita", 0, 4, TreasureKind::BOTHHANDS)
+    t14 = Treasure.new("Gaita", 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << t14
     
-    t15 = Treasure.new("Insecticida", 0, 2, TreasureKind::ONEHAND)
+    t15 = Treasure.new("Insecticida", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t15
     
-    t16 = Treasure.new("Escopeta de 3 cañones", 0, 4, TreasureKind::BOTHHANDS)
+    t16 = Treasure.new("Escopeta de 3 cañones", 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << t16
     
-    t17 = Treasure.new("Garabato místico", 0, 2, TreasureKind::ONEHAND)
+    t17 = Treasure.new("Garabato místico", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t17
     
-    t18 = Treasure.new("La rebeca metálica", 0, 2, TreasureKind::ARMOR)
+    t18 = Treasure.new("La rebeca metálica", 2, TreasureKind::ARMOR)
     @unusedTreasures << t18
     
-    t19 = Treasure.new("Lanzallamas", 0, 4, TreasureKind::BOTHHANDS)
+    t19 = Treasure.new("Lanzallamas", 4, TreasureKind::BOTHHANDS)
     @unusedTreasures << t19
     
-    t20 = Treasure.new("Necrocomicón", 0, 1, TreasureKind::ONEHAND)
+    t20 = Treasure.new("Necrocomicón", 1, TreasureKind::ONEHAND)
     @unusedTreasures << t20
     
-    t21 = Treasure.new("Necronomicón", 0, 5, TreasureKind::BOTHHANDS)
+    t21 = Treasure.new("Necronomicón", 5, TreasureKind::BOTHHANDS)
     @unusedTreasures << t21
     
-    t22 = Treasure.new("Linterna a 2 manos", 0, 3, TreasureKind::BOTHHANDS)
+    t22 = Treasure.new("Linterna a 2 manos", 3, TreasureKind::BOTHHANDS)
     @unusedTreasures << t22
     
-    t23 = Treasure.new("Necrognomicón", 0, 2, TreasureKind::ONEHAND)
+    t23 = Treasure.new("Necrognomicón", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t23
     
-    t24 = Treasure.new("Necrotelecom", 0, 2, TreasureKind::HELMET)
+    t24 = Treasure.new("Necrotelecom", 2, TreasureKind::HELMET)
     @unusedTreasures << t24
     
-    t25 = Treasure.new("Mazo de los antiguos", 0, 3, TreasureKind::ONEHAND)
+    t25 = Treasure.new("Mazo de los antiguos", 3, TreasureKind::ONEHAND)
     @unusedTreasures << t25
     
-    t26 = Treasure.new("Necroplayboycón", 0, 3, TreasureKind::ONEHAND)
+    t26 = Treasure.new("Necroplayboycón", 3, TreasureKind::ONEHAND)
     @unusedTreasures << t26
     
-    t27 = Treasure.new("Porra preternatural", 0, 2, TreasureKind::ONEHAND)
+    t27 = Treasure.new("Porra preternatural", 2, TreasureKind::ONEHAND)
     @unusedTreasures << t27
     
-    t28 = Treasure.new("Shogulador", 0, 1, TreasureKind::BOTHHANDS)
+    t28 = Treasure.new("Shogulador", 1, TreasureKind::BOTHHANDS)
     @unusedTreasures << t28
     
-    t29 = Treasure.new("Varita de atizamiento", 0, 3, TreasureKind::ONEHAND)
+    t29 = Treasure.new("Varita de atizamiento", 3, TreasureKind::ONEHAND)
     @unusedTreasures << t29
     
-    t30 = Treasure.new("Tentáculo de pega", 0, 2, TreasureKind::HELMET)
+    t30 = Treasure.new("Tentáculo de pega", 2, TreasureKind::HELMET)
     @unusedTreasures << t30
     
-    t31 = Treasure.new("Zapato deja-amigos", 0, 1, TreasureKind::SHOES)
+    t31 = Treasure.new("Zapato deja-amigos", 1, TreasureKind::SHOES)
     @unusedTreasures << t31  
     
+  
   end
   
 def initMonsterCardDeck()
