@@ -11,7 +11,6 @@ require_relative 'TreasureKind.rb'
 
 module NapakalakiGame
 
-
 class CardDealer
   
   include Singleton
@@ -19,14 +18,7 @@ class CardDealer
   @@instance = nil
   
   attr_reader :unusedTreasures, :usedTreasures, :unusedMonsters, :usedMonsters
-  
-  def self.getInstance
-    if(@@instance==nil)
-      @@instance=CardDealer.new
-    end
-    return @@instance 
-  end
-  
+ 
   def initialize ()
     @unusedTreasures=Array.new
     @usedTreasures=Array.new

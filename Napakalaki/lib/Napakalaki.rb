@@ -14,22 +14,13 @@ require 'Monster.rb'
 class Napakalaki
   
   include Singleton
-  
-  @@instance=nil
-  
+
   attr_reader :currentPlayer, :players, :currentMonster, :dealer
 
   def initialize
     
   end
-  
-  def self.getInstance
-    if(@@instance==nil)
-      @@instance=Napakalaki.new
-    end
-    return @@instance 
-  end
-  
+
   def developCombat()
     
   end

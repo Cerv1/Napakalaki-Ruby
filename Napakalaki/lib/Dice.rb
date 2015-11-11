@@ -8,26 +8,14 @@ module NapakalakiGame
 class Dice
   
   include Singleton
-  
-  @@instance=nil
-  
-  def self.getInstance
-    if(@@instance==nil)
-      @@instance=Dice.new
-    end
-    return @@instance 
-  end
-  
+
   def initialize()
-    self.nextNumber()
+    
   end
   
   def nextNumber()
     return 1+rand(6)
   end
-  
-  
+   
 end
-
-
 end
