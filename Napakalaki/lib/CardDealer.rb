@@ -15,8 +15,6 @@ class CardDealer
   
   include Singleton
 
-  @@instance = nil
-  
   attr_reader :unusedTreasures, :usedTreasures, :unusedMonsters, :usedMonsters
  
   def initialize ()
