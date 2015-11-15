@@ -1,7 +1,4 @@
 #encoding: utf-8
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
 
 module NapakalakiGame
 
@@ -9,6 +6,7 @@ require_relative 'Treasure.rb'
 require_relative 'BadConsequence.rb'
 
 class Player
+  
   @@MAXLEVEL=10
   
   attr_reader :name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures
@@ -70,8 +68,8 @@ class Player
   
   end
   
-  private
-  #/////////////////////////////////                     PRIVATE                 /////////////////////////////////
+  
+private
     
   def bringToLife()
     @dead=false;
