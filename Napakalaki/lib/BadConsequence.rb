@@ -53,6 +53,9 @@ class BadConsequence
      \n Número de tesoros ocultos: #{@nHiddenTreasures} \n Muerte:  #{@death} \n Tesoros ocultos específicos: #{@specificHiddenTreasures} 
      \n Tesoros visibles específicos: #{@specificVisibleTreasures}"
   end
-    
+ 
+
 end
+   prueba = BadConsequence.newLevelNumberOfTreasures("asd", 2,3,3)
+    puts prueba.to_s
 end
