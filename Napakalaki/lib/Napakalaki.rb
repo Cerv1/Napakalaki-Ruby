@@ -25,7 +25,7 @@ class Napakalaki
 
   def developCombat()
       resultado=@currentPlayer.combat(@currentMonster)
-      @dealer.giveMonsterBack(@currentMosnter)
+      @dealer.giveMonsterBack(@currentMonster)
       return resultado
   end
   
