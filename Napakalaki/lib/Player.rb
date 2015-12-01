@@ -75,11 +75,35 @@ class Player
   end
 
   def initTreasures()
-
+      dealer=CardDealer.instance
+      dice=Dice.instance
+      bringToLife
+      
+      treasure=dealer.nextTreasure
+      @hiddenTreasures << treasure
+      
+      number=dice.nextNumber
+      if(number>1)
+          treasure=dealer.nextTreasure
+          @hiddenTreasures << treasure
+      end
+      
+      if(number == 6)
+          treasure=delaer.nextTreasure
+          @hiddenTreasures << treasure
+      end
   end
 
   def stealTreasure()
-     # return @hiddenTreasures[0]
+     canI=canISteal
+     canYou = @enemy.CanYouGiveMeATreasure
+     if(canI && canYou)
+         treasure=@enemy.giveMeATreasure
+         @hiddenTreasures << treasure
+         haveStolen
+         return treasure
+     end
+     return nil
   end
 
   def canISteal()
@@ -87,7 +111,13 @@ class Player
   end
 
   def discardAllTreasures()
-  
+      for i in 0..@visibleTreasures.size-1
+          discardVisibleTreasure(@visibleTreasures[i])
+      end
+      
+      for i in 0..@hiddenTreasures.size-1
+          discardVisibleTreasure(@hiddenTreasures[i])
+      end
   end
   
   

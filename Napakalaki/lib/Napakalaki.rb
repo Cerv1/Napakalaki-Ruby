@@ -48,7 +48,7 @@ class Napakalaki
           @currentPlayer.makeTreasureVisible(treasures)
       end
   end
-  
+ 
   def initGame(players)
     initPlayers(players)
     setEnemies()
@@ -128,6 +128,13 @@ private
         end
         @players[i].setEnemy(@players[pos])
     end
+  end
+  
+  def initGame(players)
+      initPlayers(players)
+      setEnemies
+      @dealer.initCards
+      nextTurn
   end
   
 end
