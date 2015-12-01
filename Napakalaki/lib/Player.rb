@@ -43,20 +43,31 @@ class Player
   end
 
   def makeTreasureVisible(t)
-    #@hiddenTreasures.delete(t)
-    #@visibleTreasures.add(t)
+    canI=canMaketreasureVisible(t)
+    if(canI)
+        @visibleTreasures << t
+        @hiddenTreasures.delete(t)
+    end
   end
 
-  def discardVisibleTreasure()
-
+  def discardVisibleTreasure(t)
+      @visibleTreasures.delete(t)
+      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.empty?)
+          @pendingBadConsequence.substractVisibleTreasures(t)
+      end
+      dieIfNoTreasures
   end
 
   def discardHiddenTreasure()
-
+      @visibleTreasures.delete(t)
+      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.empty?)
+          @pendingBadConsequence.substractVisibleTreasures(t)
+      end
+      dieIfNoTreasures
   end
 
   def validState()
-    if(pendingBadConsquence.isEmpty && hiddenTreasures.size <= 4)
+    if(@pendingBadConsquence.isEmpty? && @hiddenTreasures.size <= 4)
       return true
     else
       return false
@@ -68,7 +79,7 @@ class Player
   end
 
   def stealTreasure()
-  
+     # return @hiddenTreasures[0]
   end
 
   def canISteal()
@@ -115,15 +126,47 @@ private
   end
    
   def applyPrize(m)
-    
+    nLevels=m.getLevelsGained
+    incrementLevels(nLevels)
+    nTreasures=m.getTreasuresGained
+    if(nTreasures>0)
+        dealer=CardDealer.getInstance
+        for i in 0..nTreasures
+            treasure=dealer.nextTreasure
+            @hiddenTreasres << treasure
+        end
+    end
   end
 
   def applyBadConsequence(m)
-    
+    badConsequence = m.getBadConsequence
+    nLevels = badConsequence.level
+    decrementLevels(nLevels)
+    pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
+    setPendingBadConsequence(pendingBad)
   end
   
   def canMakeTreasureVisible(t)
-
+      resultado=true
+      tipo=t.type
+      tesoros_onehand=0
+      
+      for i in 0..@visibleTreasures.size-1
+          if(@visibleTreasures[i].type==TreasureKind::ONEHAND && tipo==TreasureKind::ONEHAND)
+              tesoros_onehand=tesoros_onehand+1
+          end
+          if(tesoros_onehand>=2)
+              resultado=false
+          else if(tesoros_nehand == 1 && tipo==TreasureKind.BOTHHANDS)
+                  resultado=false
+          else if(@visibleTreasures[i].type == tipo)
+                  resultado=false
+          end
+          end
+      
+        end
+      end
+      return resultado
   end
 
   def howManyVisibleTreasures(tKind)
@@ -143,7 +186,11 @@ private
   end
   
   def giveMeATreasure()
-  
+      number=@hiddenTreasures.size
+      indice = Rand(number)
+      robado=@hiddenTreasures[i]
+      @hiddenTreasures.delete_at(indice)
+      return robado
   end
   
   def canYouGiveMeATreasure()
