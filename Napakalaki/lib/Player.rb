@@ -28,7 +28,18 @@ class Player
   end
 
   def combat(m)
-    
+    myLevel=@combatLevel
+    monsterLevel=m.getCombatLevel
+    if(myLevel>monsterLevel)
+        applyPrize(m)
+        if(@level>=@@MAXLEVEL)
+            return CombatResult::WINGAME
+        else
+            return CombatResult::WIN
+        end
+        applyBadConsequence(m)
+        return CombatResult::LOSE
+    end   
   end
 
   def makeTreasureVisible(t)
