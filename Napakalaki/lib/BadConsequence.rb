@@ -36,6 +36,31 @@ class BadConsequence
     return false
   end
   
+  def substractHiddenTreasure(t)7
+      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
+          for i in 0..@specificHiddenTreasures.size-1
+              if(t.type==@specificHiddenTreasures[i])
+                  @specificHiddenTreasures.delete_at(i)
+              end
+          end
+      else
+          @nHiddenTreasures=@nHiddenTreasures-1
+      end
+      
+  end
+  
+  def substractVisibleTreasure(t)
+      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
+          for i in 0..@specificvisibleTreasures.size-1
+              if(t.type==@specificVisibleTreasures[i])
+                  @specificVisibleTreasures.delete_at(i)
+              end
+          end
+      else
+          @nVisibleTreasures=@nVisibleTreasures-1
+      end
+  end
+  
   def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
     new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
   end
@@ -56,6 +81,5 @@ class BadConsequence
  
 
 end
-   prueba = BadConsequence.newLevelNumberOfTreasures("asd", 2,3,3)
-    puts prueba.to_s
+
 end

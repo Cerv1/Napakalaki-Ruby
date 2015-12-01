@@ -24,11 +24,25 @@ class CardDealer
   end
    
   def nextTreasure()
-    
+      if(@unusedTreasures.empty?)
+          @unusedTreasures=@usedTreasures
+          @usedTreasures.clear
+          @unusedTreasures.shuffle!
+      end
+       aux=@unusedTreasures[@unusedTreasures.size-1]
+       @unusedTreasures.delete_at(@unusedTreasures.size-1)
+       return aux
   end
   
   def nextMonster()
-    
+    if(@unusedMonsters.empty?)
+          @unusedMonsters=@usedMonsters
+          @usedMonsters.clear
+          @unusedMonsters.shuffle!
+      end
+       aux=@unusedMonsters[@unusedMonsters.size-1]
+       @unusedMonsters.delete_at(@unusedMonsters.size-1)
+       return aux
   end
   
   def giveTreasureBack(t)
