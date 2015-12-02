@@ -76,7 +76,13 @@ class Napakalaki
     end
     return resultado
   end
-  
+   
+  def initGame(players)
+      initPlayers(players)
+      setEnemies
+      @dealer.initCards
+      nextTurn
+  end
 
 private
     
@@ -86,14 +92,13 @@ private
     end
   end
   
-  def nextPlayer()
-      
+  def nextPlayer()      
       if(@currentPlayerIndex == @players.size-1)
           @currentPlayerIndex=0
       end
       
     if(@currentPlayer == nil)
-        x=1+Rand(@players.size-1)
+        x=1+rand(@players.size-1)
         @currentPlayer=@players[x]
         @currentPlayerIndex=@currentPlayer+1
    
@@ -116,26 +121,20 @@ private
   
   def setEnemies()
     distinto=false
-    for i in 0..@players.size
-        pos=Rand(@players.size)
-        if(pos==i)
-            while (!distinto)
-                pos=Rand(@players.size)
-                if(pos!=i)
-                    distinto=true
-                end
-            end
+    i=0
+    @players.each {|player|}
+      pos=rand(@players.size)
+      if(pos==i)
+        while(!distinto)
+          pos=rand(@players.size)
+          if(pos!=i)
+            distinto=true
+          end
         end
-        @players[i].setEnemy(@players[pos])
+      end
+      @players[i].setEnemy(@players[pos])
+      i+=1
     end
   end
-  
-  def initGame(players)
-      initPlayers(players)
-      setEnemies
-      @dealer.initCards
-      nextTurn
-  end
-  
-end
+
 end

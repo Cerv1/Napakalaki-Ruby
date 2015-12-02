@@ -4,6 +4,7 @@ module NapakalakiGame
 
 require_relative 'Treasure.rb'
 require_relative 'BadConsequence.rb'
+require_relative 'Napakalaki.rb'
 
 class Player
   

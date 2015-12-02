@@ -11,7 +11,7 @@ module NapakalakiGame
    
       def prueba
         
-       test = Test::GameTester.instance
+       test = NapakalakiGame::GameTester.instance
      
        game = Napakalaki.instance
    

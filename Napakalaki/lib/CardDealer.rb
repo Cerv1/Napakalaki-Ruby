@@ -54,14 +54,15 @@ class CardDealer
   end
   
   def initCards()
-    
+    initTreasureCardDeck
+    initMonsterCardDeck
   end
   
 private
   
   def initTreasureCardDeck
     
-    t1 = Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET);
+    t1 = Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET)
     @unusedTreasures << t1
     
     t2 = Treasure.new("Botas de investigación", 3, TreasureKind::SHOES)

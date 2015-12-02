@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-module Test
+module NapakalakiGame
 
   module Command  
     class Option

@@ -10,7 +10,7 @@ require 'singleton'
 require_relative 'Napakalaki'
 require_relative 'Command'
 
-module Test
+module NapakalakiGame
 
 class GameTester
 
