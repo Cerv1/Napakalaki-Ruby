@@ -49,6 +49,23 @@ class BadConsequence
       
   end
   
+  def adjustToFitTreasureLists(v,h)
+      if(@specificVisibleTreasures.isEmpty? && @specificHiddenTreasures.isEmpty?)
+          if(v.size > @nVisibleTreasures)
+              n_visibles=@nVisibleTreasures
+          else
+              n_visibles=v.size
+          end
+          if(h.size > @nHiddenTreasures)
+              n_ocultos=@nHiddenTreasures
+          else
+              n_ocultos=h.size
+          end
+          mal_rollo=BadConsequence.new(@text, 0, n_visibles, n_ocultos)
+      end
+
+  end
+  
   def substractVisibleTreasure(t)
       if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
           for i in 0..@specificvisibleTreasures.size-1

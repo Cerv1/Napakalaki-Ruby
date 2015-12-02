@@ -46,11 +46,11 @@ class CardDealer
   end
   
   def giveTreasureBack(t)
-    unusedTreasures.add(t)
+    @unusedTreasures << t
   end
   
   def giveMonsterBack(m)
-    unusedMonsters.add(m)
+    @unusedMonsters << m
   end
   
   def initCards()

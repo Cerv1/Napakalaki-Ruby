@@ -13,13 +13,13 @@ class Napakalaki
   
   include Singleton
 
-  attr_reader :currentPlayer, :players, :currentMonster, :dealer, :currentPlayerIndex
+  attr_accessor :currentPlayer, :players, :currentMonster, :dealer, :currentPlayerIndex
 
   def initialize
     @currentPlayer=nil
     @currentPlayerIndex=0
     @players=Array.new
-    @dealer=nil
+    @dealer=CardDealer.instance
     @currentMonster=nil
   end
 
@@ -53,18 +53,23 @@ class Napakalaki
     initPlayers(players)
     setEnemies()
     @dealer.initCards()
+    for i in 0..@players.size-1
+        @players.at(i).initTreasures
+    end
     nextTurn()
   end
   
-  def nextTurn()
-    stateOK=nextTurnIsAllowed()
+  def nextTurn
+    stateOK=nextTurnIsAllowed
     if(stateOK)
-        @currentMonster = @dealer.nextMonster()
-        @currentPlayer=nextPlayer()
-        dead=@currentPlayer.isDead()
-        if(dead)
-            @currentPlayer.initTreasures()
+        @currentMonster = @dealer.nextMonster
+        @currentPlayer=nextPlayer
+        dead=@currentPlayer.isDead
+          if(dead)
+            @currentPlayer.initTreasures
         end
+    else
+         @currentMonster=@dealer.nextMonster
     end
     return stateOK
   end
@@ -76,7 +81,14 @@ class Napakalaki
     end
     return resultado
   end
+   def getCurrentPlayer
+       return @currentPlayer
+   end
    
+   def getCurrentMonster
+       return @currentMonster
+   end
+ 
   def initGame(players)
       initPlayers(players)
       setEnemies
@@ -87,8 +99,8 @@ class Napakalaki
 private
     
   def initPlayers(names)
-    names.each do
-        @players << Player.new(names)  
+    names.each do |s|
+        @players << Player.new(s)  
     end
   end
   
@@ -99,21 +111,21 @@ private
       
     if(@currentPlayer == nil)
         x=1+rand(@players.size-1)
-        @currentPlayer=@players[x]
-        @currentPlayerIndex=@currentPlayer+1
-   
+        @currentPlayer=@players.at(x)
+        @currentPlayerIndex=@currentPlayerIndex+1
    elsif(@currentPlayerIndex == @players.size-1)
-        @currentPlayer=@players[0]
-        @currentPlayerIndex=@currentPlayer+1
+       @currentPlayer=@players.at(x)
+        @currentPlayerIndex=@currentPlayerIndex+1
     else
         @currentPlayer=@players[@currentPlayerIndex+1]
-        @currentPlayerIndex=@currentPlayer+1
+        @currentPlayerIndex=@currentPlayerIndex+1
     end
+    return @currentPlayer
   end
     
   def nextTurnIsAllowed()
     resultado=false
-    if(@currentPlayer.validState() || @currentPlayer == nil)
+    if( @currentPlayer == nil || @currentPlayer.validState() )
         resultado=true
     end
     return resultado

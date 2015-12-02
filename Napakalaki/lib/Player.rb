@@ -24,14 +24,22 @@ class Player
     @enemy=nil
   end
 
-  def isDead()
+  def isDead
     return @dead
   end
 
+   def getVisibleTreasures
+       return  @visibleTreasures
+   end
+   
+   def getHiddenTreasures
+       return @hiddenTreasures
+   end
+
   def combat(m)
-    myLevel=@combatLevel
-    monsterLevel=m.getCombatLevel
-    if(myLevel>monsterLevel)
+    myLevel=@level
+    monsterLevel=m.combat_level
+    if (myLevel > monsterLevel)
         applyPrize(m)
         if(@level>=@@MAXLEVEL)
             return CombatResult::WINGAME
@@ -67,8 +75,8 @@ class Player
       dieIfNoTreasures
   end
 
-  def validState()
-    if(@pendingBadConsquence.isEmpty? && @hiddenTreasures.size <= 4)
+  def validState
+    if(@pendingBadConsequence.isEmpty? && @hiddenTreasures.size <= 4)
       return true
     else
       return false
@@ -113,14 +121,17 @@ class Player
 
   def discardAllTreasures()
       for i in 0..@visibleTreasures.size-1
-          discardVisibleTreasure(@visibleTreasures[i])
+          discardVisibleTreasure(@visibleTreasures.at(i))
       end
       
       for i in 0..@hiddenTreasures.size-1
-          discardVisibleTreasure(@hiddenTreasures[i])
+          discardVisibleTreasure(@hiddenTreasures.at(i))
       end
   end
   
+  def setEnemy(enemy)
+       @enemy=enemy
+   end
   
 private
     
@@ -132,10 +143,10 @@ private
     total=level
     i=0
     while i<@visibleTreasures.size
-      total+=@visibleTreasures[i].getBonus  
+      total+=@visibleTreasures.at(i).getBonus  
     end
     while i<@hiddenTreasures.size
-      total+=@hiddenTreasures[i].getBonus
+      total+=@hiddenTreasures.at(i).getBonus
     end
      total
   end
@@ -183,14 +194,14 @@ private
       tesoros_onehand=0
       
       for i in 0..@visibleTreasures.size-1
-          if(@visibleTreasures[i].type==TreasureKind::ONEHAND && tipo==TreasureKind::ONEHAND)
+          if(@visibleTreasures.at(i).type==TreasureKind::ONEHAND && tipo==TreasureKind::ONEHAND)
               tesoros_onehand=tesoros_onehand+1
           end
           if(tesoros_onehand>=2)
               resultado=false
           else if(tesoros_nehand == 1 && tipo==TreasureKind.BOTHHANDS)
                   resultado=false
-          else if(@visibleTreasures[i].type == tipo)
+          else if(@visibleTreasures.at(i).type == tipo)
                   resultado=false
           end
           end
@@ -219,7 +230,7 @@ private
   def giveMeATreasure()
       number=@hiddenTreasures.size
       indice = Rand(number)
-      robado=@hiddenTreasures[i]
+      robado=@hiddenTreasures.at(i)
       @hiddenTreasures.delete_at(indice)
       return robado
   end
