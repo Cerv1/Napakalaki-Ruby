@@ -60,6 +60,8 @@ class CardDealer
   def initCards()
     initTreasureCardDeck
     initMonsterCardDeck
+    shuffleTreasures
+    shuffleMonsters
   end
   
 private
@@ -249,11 +251,11 @@ def initMonsterCardDeck()
 
  
   def shuffleTreasures()
-    unusedTreasures.shuffle!
+    @unusedTreasures.shuffle!
   end
   
   def shuffleMonsters()
-    unusedMonsters.shuffle!
+    @unusedMonsters.shuffle!
   end
   
 end

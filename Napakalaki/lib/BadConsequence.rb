@@ -25,15 +25,17 @@ class BadConsequence
   end
   
   def isEmpty
-    if(@nHiddenTreasures == -1 && @nHiddenTreasures == -1)
+    empty=false
+    if(@nHiddenTreasures == -1)
       if(@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? && @level==0 && @death==false)
-        return true
+        empty=true
       end
-      else if(@nHiddenTreasures==0 && @nVisibleTreasures == 0 && @level==0 && @death == false )
-          return true
-      end
+    else
+          if(@level==0 && death==false)
+            empty=true
+          end
     end
-    return false
+    return empty
   end
   
   def substractHiddenTreasure(t)

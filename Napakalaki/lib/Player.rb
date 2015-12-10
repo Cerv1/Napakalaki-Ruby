@@ -136,6 +136,10 @@ class Player
   def setEnemy(enemy)
        @enemy=enemy
    end
+      
+  def to_s
+    "#{@name}   CombatLevel -> #{@level}"
+  end
   
 private
     
@@ -278,6 +282,6 @@ private
   def haveStolen()
     @canISteal=false
   end
-  
+
 end
 end

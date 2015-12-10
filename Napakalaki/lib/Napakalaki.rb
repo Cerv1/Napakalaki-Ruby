@@ -30,46 +30,40 @@ class Napakalaki
   end
   
   def discardVisibleTreasures(treasures)
-      @treasures.each do
-          @currentPlayer.discardVisibleTreasure(treasures)
-          dealer.giveTreasureBack(treasures)
+        treasures.each do |tesoro|
+          @currentPlayer.discardVisibleTreasure(tesoro)
+          @dealer.giveTreasureBack(tesoro)
       end
   end
   
   def discardHiddenTreasures(treasures)
-        treasures.each do
-          @currentPlayer.discardHiddenTreasure(treasures)
-          @dealer.giveTreasureBack(treasures)
+        treasures.each do |tesoro|
+          @currentPlayer.discardHiddenTreasure(tesoro)
+          @dealer.giveTreasureBack(tesoro)
       end
   end
   
   def makeTreasuresVisible(treasures)
-      treasures.each do
-          @currentPlayer.makeTreasureVisible(treasures)
+      treasures.each do |tesoro|
+          @currentPlayer.makeTreasureVisible(tesoro)
       end
   end
- 
+  
   def initGame(players)
-    initPlayers(players)
-    setEnemies()
-    @dealer.initCards()
-    for i in 0..@players.size-1
-        @players.at(i).initTreasures
-    end
-    nextTurn()
+      initPlayers(players)
+      setEnemies
+      @dealer.initCards
+      nextTurn
   end
   
   def nextTurn
-    stateOK=nextTurnIsAllowed
+    stateOK = nextTurnIsAllowed
     if(stateOK)
-        @currentMonster = @dealer.nextMonster
-        @currentPlayer=nextPlayer
-        dead=@currentPlayer.isDead
-          if(dead)
-            @currentPlayer.initTreasures
-        end
-    else
-         @currentMonster=@dealer.nextMonster
+      @currentMonster=@dealer.nextMonster
+      @currentPlayer=nextPlayer
+      if(@currentPlayer.isDead)
+        @currentPlayer.initTreasures
+      end
     end
     return stateOK
   end
@@ -81,6 +75,7 @@ class Napakalaki
     end
     return resultado
   end
+  
    def getCurrentPlayer
        return @currentPlayer
    end
@@ -88,13 +83,6 @@ class Napakalaki
    def getCurrentMonster
        return @currentMonster
    end
- 
-  def initGame(players)
-      initPlayers(players)
-      setEnemies
-      @dealer.initCards
-      nextTurn
-  end
 
 private
     
@@ -104,34 +92,28 @@ private
     end
   end
   
-  def nextPlayer()      
-      if(@currentPlayerIndex == @players.size-1)
-          @currentPlayerIndex=0
-      end
-      
+  def nextPlayer()  
     if(@currentPlayer == nil)
         x=rand(@players.size)
-        @currentPlayer=@players.at(x)
-        @currentPlayerIndex=@currentPlayerIndex+1
-   elsif(@currentPlayerIndex == @players.size-1)
-       @currentPlayer=@players.at(x)
-        @currentPlayerIndex=@currentPlayerIndex+1
     else
-        @currentPlayer=@players[@currentPlayerIndex+1]
-        @currentPlayerIndex=@currentPlayerIndex+1
+        @currentPlayerIndex=@players.index(@currentPlayer)
+        if(@currentPlayerIndex==@players.size-1)
+          x=0
+        else
+          x=@currentPlayerIndex+1
+        end
     end
+    nextplayer=@players.at(x)
+    @currentPlayer=nextplayer
     return @currentPlayer
   end
     
   def nextTurnIsAllowed()
-    resultado=false
-    if( @currentPlayer == nil )
-        resultado=true
+    if(@currentPlayer==nil)
+      return true
     else
-        resultado=@currentPlayer.validState
-        
-    return resultado
-   end
+      return @currentPlayer.validState
+    end
   end
   
   def setEnemies()
