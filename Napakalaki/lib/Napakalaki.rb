@@ -110,7 +110,7 @@ private
       end
       
     if(@currentPlayer == nil)
-        x=1+rand(@players.size-1)
+        x=rand(@players.size)
         @currentPlayer=@players.at(x)
         @currentPlayerIndex=@currentPlayerIndex+1
    elsif(@currentPlayerIndex == @players.size-1)
@@ -125,10 +125,13 @@ private
     
   def nextTurnIsAllowed()
     resultado=false
-    if( @currentPlayer == nil || @currentPlayer.validState() )
+    if( @currentPlayer == nil )
         resultado=true
-    end
+    else
+        resultado=@currentPlayer.validState
+        
     return resultado
+   end
   end
   
   def setEnemies()

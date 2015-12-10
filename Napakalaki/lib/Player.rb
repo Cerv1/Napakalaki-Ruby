@@ -60,19 +60,23 @@ class Player
   end
 
   def discardVisibleTreasure(t)
-      @visibleTreasures.delete(t)
-      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.empty?)
+      if(@visibleTreasures != nil)
+         @visibleTreasures.delete(t)
+      if(@pendingBadConsequence!=nil)
           @pendingBadConsequence.substractVisibleTreasures(t)
       end
       dieIfNoTreasures
+     end
   end
 
   def discardHiddenTreasure()
-      @visibleTreasures.delete(t)
+      if(@hiddenTreasures != nil)
+        @hiddenTreasures.delete(t)
       if(@pendingBadConsequence!=nil && !@pendingBadConsequence.empty?)
           @pendingBadConsequence.substractVisibleTreasures(t)
       end
       dieIfNoTreasures
+      end
   end
 
   def validState
@@ -189,26 +193,54 @@ private
   end
   
   def canMakeTreasureVisible(t)
-      resultado=true
-      tipo=t.type
-      tesoros_onehand=0
-      
-      for i in 0..@visibleTreasures.size-1
-          if(@visibleTreasures.at(i).type==TreasureKind::ONEHAND && tipo==TreasureKind::ONEHAND)
-              tesoros_onehand=tesoros_onehand+1
-          end
-          if(tesoros_onehand>=2)
-              resultado=false
-          else if(tesoros_nehand == 1 && tipo==TreasureKind.BOTHHANDS)
-                  resultado=false
-          else if(@visibleTreasures.at(i).type == tipo)
-                  resultado=false
-          end
-          end
-      
+      tipo = t.tkind
+    # Si es ARMOR
+    if(tipo == TreasureKind::ARMOR)
+      for treasure in @visibleTreasures
+        if(treasure.tkind == TreasureKind::ARMOR)
+          return false
         end
       end
-      return resultado
+        return true
+      
+    # Si es ONEHAND
+    elsif(tipo == TreasureKind::ONEHAND)
+      numUnaMano = 0
+      for treasure in @visibleTreasures
+        if(treasure.tkind == TreasureKind::ONEHAND)
+          numUnaMano+=1;
+        end
+      end
+      return (numUnaMano <= 1)
+    
+    # Si es BOTHHANDS
+    elsif(tipo == TreasureKind::BOTHHANDS)
+      numUnaMano = 0
+      for treasure in @visibleTreasures
+        if(treasure.tkind == TreasureKind::ONEHAND || treasure.tkind == TreasureKind::BOTHHANDS)
+          return false
+        end
+      end
+      return true
+     
+    # Si es HELMET
+    elsif(tipo == TreasureKind::HELMET)
+      for treasure in @visibleTreasures
+        if(treasure.tkind == TreasureKind::HELMET)
+          return false
+        end
+      end
+      return true
+      
+    #Si es SHOE
+    else
+      for treasure in @visibleTreasures
+        if(treasure.tkind == TreasureKind::SHOES)
+          return false
+        end
+      end
+      return true
+    end
   end
 
   def howManyVisibleTreasures(tKind)

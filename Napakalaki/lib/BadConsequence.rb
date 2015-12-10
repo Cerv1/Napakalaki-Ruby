@@ -36,17 +36,20 @@ class BadConsequence
     return false
   end
   
-  def substractHiddenTreasure(t)7
+  def substractHiddenTreasure(t)
       if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
-          for i in 0..@specificHiddenTreasures.size-1
-              if(t.type==@specificHiddenTreasures[i])
-                  @specificHiddenTreasures.delete_at(i)
-              end
+          unless (@specificHiddenTreasures.empty?)
+              @specificHiddenTreasures.delete(t.type)
           end
-      else
-          @nHiddenTreasures=@nHiddenTreasures-1
-      end
-      
+    end
+  end
+  
+   def substractVisibleTreasure(t)
+      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
+          unless (@specificVisibleTreasures.empty?)
+              @specificVisibleTreasures.delete(t.type)
+          end
+    end
   end
   
   def adjustToFitTreasureLists(v,h)
@@ -62,19 +65,31 @@ class BadConsequence
               n_ocultos=h.size
           end
           mal_rollo=BadConsequence.new(@text, 0, n_visibles, n_ocultos)
-      end
-
-  end
-  
-  def substractVisibleTreasure(t)
-      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
-          for i in 0..@specificvisibleTreasures.size-1
-              if(t.type==@specificVisibleTreasures[i])
-                  @specificVisibleTreasures.delete_at(i)
-              end
-          end
       else
-          @nVisibleTreasures=@nVisibleTreasures-1
+          if(@specificHiddenTreasures != nil)
+              adHidList = Array.new
+          else
+              adHidList = nil
+          end
+          
+          if(@specificVisibleTreasures != nil)
+              adVisList = Array.new
+          else
+              adVisList = nil
+          end
+          
+          vKind=v.collect{|t| t.type}
+          hKind=h.collect{|t| t.type}
+          
+          [TreasureKind::HELMET, TreasureKind::ARMOR, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS].each do |tkind|
+              if(@specificVisibleTreasures != nil)
+                  adVisList=adVisList+[tkind]*[vKind.select{|t| t==tkind}.size, @specificVisibleTreasures.select{|t| t==tkind}.size].min
+              end
+              if(@specificHiddenTreasures != nil)
+                  adHidList=adHidList+[tkind]*[hKind.select{|t| t==tkind}.size, @specificHiddenTreasures.select{|t| t==tkind}.size].min
+             end
+          end
+          return BadConsequence.newLevelSpecificTreasures(@text,0,adVisList, adHidList)
       end
   end
   
