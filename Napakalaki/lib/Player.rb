@@ -111,6 +111,23 @@ class Player
   def canISteal
     return @canISteal
   end
+  
+  def combat(m)
+    myLevel = getCombatLevel
+    monsterLevel = m.getCombatLevel
+    if(myLevel > monsterLevel)
+      applyPrize(m)
+      if(@level >= @@MAXLEVEL)
+        combatresult=CombatResult::WINGAME
+      else
+        combatresult=CombatResult::WIN
+      end
+    else
+      applyBadConsequence(m)
+      combatresult=CombatResult::LOSE
+    end
+    return combatresult
+  end
 
   def discardAllTreasures
       for i in 0..@visibleTreasures.size
