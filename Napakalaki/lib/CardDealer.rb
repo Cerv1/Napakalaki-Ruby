@@ -57,7 +57,7 @@ class CardDealer
     @unusedMonsters.delete(m)
   end
   
-  def initCards()
+  def initCards
     initTreasureCardDeck
     initMonsterCardDeck
     shuffleTreasures
@@ -162,7 +162,7 @@ private
     @unusedTreasures << t31  
   end
   
-def initMonsterCardDeck()
+def initMonsterCardDeck
  
     p1 = Prize.new(2,1)
     bc1 = BadConsequence.newLevelNumberOfTreasures("Pierdes tu armadura visible y otra oculta", 0, 1, 1)
@@ -250,11 +250,11 @@ def initMonsterCardDeck()
   end
 
  
-  def shuffleTreasures()
+  def shuffleTreasures
     @unusedTreasures.shuffle!
   end
   
-  def shuffleMonsters()
+  def shuffleMonsters
     @unusedMonsters.shuffle!
   end
   
