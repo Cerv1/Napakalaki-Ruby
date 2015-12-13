@@ -275,7 +275,7 @@ private
 public
 
   def to_s
-    "#{@name}   Level -> #{@level}"
+    "#{@name}   CombatLevel -> #{getCombatLevel}   Level -> #{@level}"
   end
   
   
