@@ -246,13 +246,13 @@ private
     total_visibles
   end
       
-  def dieIfNoTreasures()
+  def dieIfNoTreasures
     if(hiddenTreasures.empty? && visibleTreasures.empty?)
       @dead=true
     end
   end
   
-  def giveMeATreasure()
+  def giveMeATreasure
       number=@hiddenTreasures.size
       indice = Rand(number)
       robado=@hiddenTreasures.at(i)
@@ -260,15 +260,15 @@ private
       return robado
   end
   
-  def canYouGiveMeATreasure()
+  def canYouGiveMeATreasure
   tienetesoros=true
-  if(visibleTreasures.empty? && hiddenTreasures.empty?)
+  if(@visibleTreasures.empty? && @hiddenTreasures.empty?)
     tienetesoros=false
   end
     return tienetesoros
   end
   
-  def haveStolen()
+  def haveStolen
     @canISteal=false
   end
 
