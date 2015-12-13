@@ -13,6 +13,10 @@ class Treasure
     @bonus=bonus
     @type=t  
   end
+
+  def to_s
+    "#{@name} (#{@bonus}-#{@type})"
+  end
   
 end
 end

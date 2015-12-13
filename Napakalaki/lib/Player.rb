@@ -5,18 +5,19 @@ module NapakalakiGame
 require_relative 'Treasure.rb'
 require_relative 'BadConsequence.rb'
 require_relative 'Napakalaki.rb'
+require_relative 'CardDealer.rb'
+require_relative 'Dice.rb'
 
 class Player
   
   @@MAXLEVEL=10
   
-  attr_reader :name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures
-  attr_writer :pendingBadConsequence, :enemy
+  attr_accessor :name, :level, :dead, :canISteal, :hiddenTreasures, :visibleTreasures, :pendingBadConsequence, :enemy
   
   def initialize(name)
     @name=name
     @level=1
-    @dead=false
+    @dead=true
     @canISteal=false
     @hiddenTreasures=Array.new
     @visibleTreasures=Array.new
@@ -36,23 +37,8 @@ class Player
        return @hiddenTreasures
    end
 
-  def combat(m)
-    myLevel=@level
-    monsterLevel=m.combat_level
-    if (myLevel > monsterLevel)
-        applyPrize(m)
-        if(@level>=@@MAXLEVEL)
-            return CombatResult::WINGAME
-        else
-            return CombatResult::WIN
-        end
-        applyBadConsequence(m)
-        return CombatResult::LOSE
-    end   
-  end
-
   def makeTreasureVisible(t)
-    canI=canMaketreasureVisible(t)
+    canI=canMakeTreasureVisible(t)
     if(canI)
         @visibleTreasures << t
         @hiddenTreasures.delete(t)
@@ -62,32 +48,35 @@ class Player
   def discardVisibleTreasure(t)
       if(@visibleTreasures != nil)
          @visibleTreasures.delete(t)
-      if(@pendingBadConsequence!=nil)
+      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
           @pendingBadConsequence.substractVisibleTreasures(t)
       end
       dieIfNoTreasures
-     end
+      end
   end
 
-  def discardHiddenTreasure()
+  def discardHiddenTreasure(t)
       if(@hiddenTreasures != nil)
         @hiddenTreasures.delete(t)
-      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.empty?)
-          @pendingBadConsequence.substractVisibleTreasures(t)
+      if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
+          @pendingBadConsequence.substractHiddenTreasures(t)
       end
       dieIfNoTreasures
       end
   end
 
   def validState
-    if(@pendingBadConsequence.isEmpty? && @hiddenTreasures.size <= 4)
+    if(@pendingBadConsequence==nil)
+      return true
+    end
+    if(@pendingBadConsequence.isEmpty && @hiddenTreasures.size <= 4)
       return true
     else
       return false
     end
   end
 
-  def initTreasures()
+  def initTreasures
       dealer=CardDealer.instance
       dice=Dice.instance
       bringToLife
@@ -102,12 +91,12 @@ class Player
       end
       
       if(number == 6)
-          treasure=delaer.nextTreasure
+          treasure=dealer.nextTreasure
           @hiddenTreasures << treasure
       end
   end
 
-  def stealTreasure()
+  def stealTreasure
      canI=canISteal
      canYou = @enemy.CanYouGiveMeATreasure
      if(canI && canYou)
@@ -119,44 +108,39 @@ class Player
      return nil
   end
 
-  def canISteal()
+  def canISteal
     return @canISteal
   end
 
-  def discardAllTreasures()
-      for i in 0..@visibleTreasures.size-1
+  def discardAllTreasures
+      for i in 0..@visibleTreasures.size
           discardVisibleTreasure(@visibleTreasures.at(i))
       end
       
-      for i in 0..@hiddenTreasures.size-1
-          discardVisibleTreasure(@hiddenTreasures.at(i))
+      for i in 0..@hiddenTreasures.size
+          discardHiddenTreasure(@hiddenTreasures.at(i))
       end
   end
   
   def setEnemy(enemy)
        @enemy=enemy
    end
-      
-  def to_s
-    "#{@name}   CombatLevel -> #{@level}"
-  end
-  
+
 private
     
-  def bringToLife()
+  def bringToLife
     @dead=false;
   end
   
-  def getCombatLevel()
-    total=level
-    i=0
-    while i<@visibleTreasures.size
-      total+=@visibleTreasures.at(i).getBonus  
+  def getCombatLevel
+    total=@level
+    for treasure in @visibleTreasures
+      total += treasure.bonus
     end
-    while i<@hiddenTreasures.size
-      total+=@hiddenTreasures.at(i).getBonus
+    for treasure2 in @hiddenTreasures
+      total += treasure2.bonus
     end
-     total
+     return total
   end
     
   def incrementLevels(i)
@@ -183,13 +167,13 @@ private
         dealer=CardDealer.getInstance
         for i in 0..nTreasures
             treasure=dealer.nextTreasure
-            @hiddenTreasres << treasure
+            @hiddenTreasures << treasure
         end
     end
   end
 
   def applyBadConsequence(m)
-    badConsequence = m.getBadConsequence
+    badConsequence = m.mal_rollo
     nLevels = badConsequence.level
     decrementLevels(nLevels)
     pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
@@ -197,49 +181,54 @@ private
   end
   
   def canMakeTreasureVisible(t)
-      tipo = t.tkind
-    # Si es ARMOR
+      tipo = t.type
+
     if(tipo == TreasureKind::ARMOR)
       for treasure in @visibleTreasures
-        if(treasure.tkind == TreasureKind::ARMOR)
+        if(treasure.type == TreasureKind::ARMOR)
           return false
         end
       end
         return true
-      
-    # Si es ONEHAND
+
     elsif(tipo == TreasureKind::ONEHAND)
-      numUnaMano = 0
+      tesoros_onehand = 0
       for treasure in @visibleTreasures
-        if(treasure.tkind == TreasureKind::ONEHAND)
-          numUnaMano+=1;
+        if(treasure.type == TreasureKind::ONEHAND)
+          tesoros_onehand+=1;
+        end
+        if(tesoros_onehand>1)
+          return false
+        else
+          for treasure in @visibleTreasures
+            if(treasure.type == TreasureKind::BOTHHANDS)
+              return false
+            end
+          end
         end
       end
-      return (numUnaMano <= 1)
-    
-    # Si es BOTHHANDS
+      return (tesoros_onehand <= 1)
+
     elsif(tipo == TreasureKind::BOTHHANDS)
-      numUnaMano = 0
+      tesoros_onehand = 0
       for treasure in @visibleTreasures
-        if(treasure.tkind == TreasureKind::ONEHAND || treasure.tkind == TreasureKind::BOTHHANDS)
+        if(treasure.type == TreasureKind::ONEHAND || treasure.type == TreasureKind::BOTHHANDS)
           return false
         end
       end
       return true
-     
-    # Si es HELMET
+
     elsif(tipo == TreasureKind::HELMET)
       for treasure in @visibleTreasures
-        if(treasure.tkind == TreasureKind::HELMET)
+        if(treasure.type == TreasureKind::HELMET)
           return false
         end
       end
       return true
-      
-    #Si es SHOE
+
     else
       for treasure in @visibleTreasures
-        if(treasure.tkind == TreasureKind::SHOES)
+        if(treasure.type == TreasureKind::SHOES)
           return false
         end
       end
@@ -283,5 +272,12 @@ private
     @canISteal=false
   end
 
+public
+
+  def to_s
+    "#{@name}   Level -> #{@level}"
+  end
+  
+  
 end
 end

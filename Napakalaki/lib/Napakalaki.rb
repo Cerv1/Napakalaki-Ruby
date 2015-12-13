@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-require 'singleton'
 
 module NapakalakiGame
 
+require 'singleton'
 require_relative 'Player.rb'
 require_relative 'CardDealer.rb'
 require_relative 'CombatResult.rb'

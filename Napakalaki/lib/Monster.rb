@@ -4,6 +4,7 @@ module NapakalakiGame
 
 require_relative 'Prize.rb'
 require_relative 'BadConsequence.rb'
+require_relative 'Treasure.rb'
 
 class Monster
   
@@ -16,18 +17,16 @@ class Monster
         @reward=reward
   end
   
-  def getLevelsGained()
+  def getLevelsGained
     return @reward.level
   end
   
-  def getTreasuresGained()
-    return @reward.treasures
+  def getTreasuresGained
+    return @reward.getTreasures
   end
   
   def to_s
-    "Nombre: #{@name} \n Nivel: #{@combat_level} \n  
-    Mal rollo: #{@mal_rollo} \n Niveles ganados: #{@levels}
-    \n Tesoros: #{@treasures}" 
+    "Nombre: #{@name} --> Nivel: #{@combat_level} \n#{@mal_rollo.to_s} \n#{@reward}" 
   end
   
 end

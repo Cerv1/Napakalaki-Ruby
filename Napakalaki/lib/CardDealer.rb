@@ -46,7 +46,7 @@ class CardDealer
        @unusedMonsters.delete_at(0)
        return nextmonster
   end
-  
+
   def giveTreasureBack(t)
     @usedTreasures << t
     @unusedTreasures.delete(t)

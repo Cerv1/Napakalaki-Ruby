@@ -23,6 +23,18 @@ class BadConsequence
       @specificHiddenTreasures=someSpecificHiddenTreasures
       @specificVisibleTreasures=someSpecificVisibleTreasures
   end
+
+  def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
+    new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
+  end
+  
+  def BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
+    new(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
+  end
+  
+  def BadConsequence.newDeath(aText)
+    new(aText, 0, -1, -1, Array.new, Array.new , true)
+  end
   
   def isEmpty
     empty=false
@@ -55,7 +67,7 @@ class BadConsequence
   end
   
   def adjustToFitTreasureLists(v,h)
-      if(@specificVisibleTreasures.isEmpty? && @specificHiddenTreasures.isEmpty?)
+      if(@specificVisibleTreasures.empty? && @specificHiddenTreasures.empty?)
           if(v.size > @nVisibleTreasures)
               n_visibles=@nVisibleTreasures
           else
@@ -66,7 +78,7 @@ class BadConsequence
           else
               n_ocultos=h.size
           end
-          mal_rollo=BadConsequence.new(@text, 0, n_visibles, n_ocultos)
+          mal_rollo=BadConsequence.newLevelNumberOfTreasures(@text, 0, n_visibles, n_ocultos)
       else
           if(@specificHiddenTreasures != nil)
               adHidList = Array.new
@@ -91,29 +103,15 @@ class BadConsequence
                   adHidList=adHidList+[tkind]*[hKind.select{|t| t==tkind}.size, @specificHiddenTreasures.select{|t| t==tkind}.size].min
              end
           end
-          return BadConsequence.newLevelSpecificTreasures(@text,0,adVisList, adHidList)
+          mal_rollo = BadConsequence.newLevelSpecificTreasures(@text,0,adVisList, adHidList)
       end
+      return mal_rollo
   end
-  
-  def BadConsequence.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-    new(aText, someLevels, someVisibleTreasures , someHiddenTreasures, Array.new, Array.new, false)
-  end
-  
-  def BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    new(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
-  end
-  
-  def BadConsequence.newDeath(aText)
-    new(aText, 0, -1, -1, Array.new, Array.new , true)
-  end
-  
+
   def to_s
-    "Descripción del mal rollo: #{@text} \n Niveles perdidos: #{@level} \n Número de tesoros visibles: #{@nVisibleTreasures}
-     \n Número de tesoros ocultos: #{@nHiddenTreasures} \n Muerte:  #{@death} \n Tesoros ocultos específicos: #{@specificHiddenTreasures} 
-     \n Tesoros visibles específicos: #{@specificVisibleTreasures}"
+    "Descripción del mal rollo: #{@text}\nTesoros ocultos específicos: #{@specificHiddenTreasures}\nTesoros visibles específicos: #{@specificVisibleTreasures}"
   end
- 
+
 
 end
-
 end
