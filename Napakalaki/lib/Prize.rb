@@ -12,14 +12,6 @@ class Prize
     @treasures = treasures
     @level = level
   end
-  
-  def getLevel
-    return @level
-  end
-  
-  def getTreasures()
-    return @treasures
-  end
 
   def to_s
     "Tesoros ganados: #{@treasures} \nNiveles ganados: #{@level}"

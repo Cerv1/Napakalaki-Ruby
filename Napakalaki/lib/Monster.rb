@@ -16,15 +16,7 @@ class Monster
         @mal_rollo=mal_rollo
         @reward=reward
   end
-  
-  def getLevelsGained
-    return @reward.level
-  end
-  
-  def getTreasuresGained
-    return @reward.getTreasures
-  end
-  
+ 
   def to_s
     "Nombre: #{@name} --> Nivel: #{@combat_level} \n#{@mal_rollo.to_s} \n#{@reward}" 
   end
