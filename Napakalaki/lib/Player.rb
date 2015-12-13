@@ -137,10 +137,7 @@ private
     for treasure in @visibleTreasures
       total += treasure.bonus
     end
-    for treasure2 in @hiddenTreasures
-      total += treasure2.bonus
-    end
-     return total
+    return total
   end
     
   def incrementLevels(i)
