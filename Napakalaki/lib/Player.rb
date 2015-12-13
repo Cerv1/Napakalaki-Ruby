@@ -113,9 +113,9 @@ class Player
   end
   
   def combat(m)
-    myLevel = getCombatLevel
-    monsterLevel = m.getCombatLevel
-    if(myLevel > monsterLevel)
+    mylevel = getCombatLevel
+    monsterlevel = m.combat_level
+    if(mylevel > monsterlevel)
       applyPrize(m)
       if(@level >= @@MAXLEVEL)
         combatresult=CombatResult::WINGAME
