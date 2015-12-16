@@ -174,9 +174,9 @@ private
   end
    
   def applyPrize(m)
-    nLevels=m.reward.level
+    nLevels=m.getLevelsGained
     incrementLevels(nLevels)
-    nTreasures=m.reward.treasures
+    nTreasures=m.getTreasuresGained
     if(nTreasures>0)
         dealer=CardDealer.getInstance
         for i in 0..nTreasures
@@ -187,7 +187,7 @@ private
   end
 
   def applyBadConsequence(m)
-    badConsequence = BadConsequence.new(m.mal_rollo)
+    badConsequence = m.mal_rollo
     nLevels = badConsequence.level
     decrementLevels(nLevels)
     pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)

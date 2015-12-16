@@ -5,9 +5,7 @@ require_relative 'Prize.rb'
 require_relative 'Monster.rb'
 
 class BadConsequence
-    
-  private_class_method:new
-  
+
   @@MAXTREASURES=10
   
   attr_accessor:text, :level,  :nVisibleTreasures, :nHiddenTreasures, :death,
