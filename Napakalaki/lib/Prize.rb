@@ -6,7 +6,7 @@ require_relative 'Treasure.rb'
   
 class Prize
   
-  attr_reader :treasures, :level
+  attr_accessor :treasures, :level
   
   def initialize(treasures, level)
     @treasures = treasures

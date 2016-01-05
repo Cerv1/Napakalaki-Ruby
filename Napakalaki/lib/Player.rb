@@ -7,6 +7,8 @@ require_relative 'BadConsequence.rb'
 require_relative 'Napakalaki.rb'
 require_relative 'CardDealer.rb'
 require_relative 'Dice.rb'
+require_relative 'Monster.rb'
+require_relative 'Prize.rb'
 
 class Player
   
@@ -117,16 +119,18 @@ class Player
     monsterlevel = m.combat_level
     if(mylevel > monsterlevel)
       applyPrize(m)
+      puts mylevel
+      puts monsterlevel
       if(@level >= @@MAXLEVEL)
-        combatresult=CombatResult::WINGAME
+        return CombatResult::WINGAME
       else
-        combatresult=CombatResult::WIN
+        return CombatResult::WIN
       end
-    else
-      applyBadConsequence(m)
-      combatresult=CombatResult::LOSE
     end
-    return combatresult
+        puts mylevel
+      puts monsterlevel
+      applyBadConsequence(m)
+     return CombatResult::LOSE
   end
 
   def discardAllTreasures
@@ -174,11 +178,12 @@ private
   end
    
   def applyPrize(m)
-    nLevels=m.getLevelsGained
+    nLevels=m.mal_rollo.level
+    puts nLevels
     incrementLevels(nLevels)
-    nTreasures=m.getTreasuresGained
+    nTreasures=m.mal_rollo.treasures
     if(nTreasures>0)
-        dealer=CardDealer.getInstance
+        dealer=CardDealer.instance
         for i in 0..nTreasures
             treasure=dealer.nextTreasure
             @hiddenTreasures << treasure
@@ -187,7 +192,7 @@ private
   end
 
   def applyBadConsequence(m)
-    badConsequence = m.mal_rollo
+    badConsequence = m.reward
     nLevels = badConsequence.level
     decrementLevels(nLevels)
     pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
