@@ -130,7 +130,7 @@ class Player
         puts mylevel
       puts monsterlevel
       applyBadConsequence(m)
-     return CombatResult::LOSE
+    return CombatResult::LOSE
   end
 
   def discardAllTreasures
@@ -144,8 +144,8 @@ class Player
   end
   
   def setEnemy(enemy)
-       @enemy=enemy
-   end
+    @enemy=enemy
+  end
 
 private
     
