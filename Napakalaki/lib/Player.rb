@@ -27,6 +27,39 @@ class Player
     @enemy=nil
   end
 
+  def clone
+    copia = Player.new(self.name)
+    copia.level=self.level
+    copia.dead=self.dead
+    copia.canISteal=self.canISteal
+    copia.hiddenTreasures=self.hiddenTreasures
+    copia.visibleTreasures=self.visibleTreasures
+    copia.pendingBadConsequence=self.pendingBadConsequence
+    copia.enemy=self.enemy
+    return copia
+  end
+  
+  protected
+
+  def getOponentLevel(m)
+      return m.combat_level
+  end
+  
+  def shouldConvert
+      dado=Dice.instance
+      if(dado.nextNumber == 1)
+          return true
+      else
+          return false
+      end
+  end
+  
+  def getEnemy
+      return @enemy
+  end
+
+   public
+   
   def isDead
     return @dead
   end
@@ -116,19 +149,18 @@ class Player
   
   def combat(m)
     mylevel = getCombatLevel
-    monsterlevel = m.combat_level
+    monsterlevel = getOponentLevel(m)
     if(mylevel > monsterlevel)
       applyPrize(m)
-      puts mylevel
-      puts monsterlevel
       if(@level >= @@MAXLEVEL)
         return CombatResult::WINGAME
       else
         return CombatResult::WIN
       end
     end
-        puts mylevel
-      puts monsterlevel
+      if(shouldConvert)
+          return CombatResult::LOSEANDCONVERT
+      end
       applyBadConsequence(m)
     return CombatResult::LOSE
   end
@@ -178,10 +210,10 @@ private
   end
    
   def applyPrize(m)
-    nLevels=m.mal_rollo.level
+    nLevels=m.reward.level
     puts nLevels
     incrementLevels(nLevels)
-    nTreasures=m.mal_rollo.treasures
+    nTreasures=m.reward.treasures
     if(nTreasures>0)
         dealer=CardDealer.instance
         for i in 0..nTreasures
@@ -192,7 +224,7 @@ private
   end
 
   def applyBadConsequence(m)
-    badConsequence = m.reward
+    badConsequence = m.mal_rollo
     nLevels = badConsequence.level
     decrementLevels(nLevels)
     pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
@@ -274,7 +306,7 @@ private
   def giveMeATreasure
       number=@hiddenTreasures.size
       indice = Rand(number)
-      robado=@hiddenTreasures.at(i)
+      robado=@hiddenTreasures.at(indice)
       @hiddenTreasures.delete_at(indice)
       return robado
   end
@@ -290,6 +322,7 @@ private
   def haveStolen
     @canISteal=false
   end
+ 
 
 public
 
