@@ -19,10 +19,6 @@ class Cultist
         @gainedLevels=gainedLevels
     end
     
-    def getGainedLevels
-        return @gainedLevels
-    end
-    
 end
 
 end
