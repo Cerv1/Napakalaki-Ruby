@@ -2,12 +2,12 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-module Napakalaki
+module NapakalakiGame
   
   class NumericBadConsequence < BadConsequence
     
-    def initialize()
-      
+    def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
+      super(aText, someLevels, someVisibleTreasures, someHiddenTreasures, Array.new, Array.new, false)
     end
     
   end
