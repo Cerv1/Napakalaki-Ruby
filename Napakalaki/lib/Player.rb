@@ -198,7 +198,7 @@ private
   end
   
   def decrementLevels(i)
-    if(@level-i<=1)
+    if(@level-i>=1)
       @level=@level-i
     else
       @level=1 

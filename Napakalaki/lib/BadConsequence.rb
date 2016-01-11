@@ -83,11 +83,11 @@ class BadConsequence
           
           [TreasureKind::HELMET, TreasureKind::ARMOR, TreasureKind::ONEHAND, TreasureKind::BOTHHANDS].each do |tkind|
               if(@specificVisibleTreasures != nil)
-                  adVisList=adVisList+[tkind]*[vKind.select{|t| t==tkind}.size, @specificVisibleTreasures.select{|t| t==tkind}.size].min
+                  adVisList=adVisList+[tkind]*[vKind.select{|t| t==tkind}.size, @specificVisibleTreasures.select{|tt| tt==tkind}.size].min
               end
               if(@specificHiddenTreasures != nil)
-                  adHidList=adHidList+[tkind]*[hKind.select{|t| t==tkind}.size, @specificHiddenTreasures.select{|t| t==tkind}.size].min
-             end
+                  adHidList=adHidList+[tkind]*[hKind.select{|t| t==tkind}.size, @specificHiddenTreasures.select{|tt| tt==tkind}.size].min
+              end
           end
           mal_rollo = SpecificBadConsequence.new(@text,0,adVisList, adHidList)
       end

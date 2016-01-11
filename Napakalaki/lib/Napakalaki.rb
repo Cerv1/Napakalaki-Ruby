@@ -27,7 +27,7 @@ class Napakalaki
       resultado=@currentPlayer.combat(@currentMonster)
       if(resultado==CombatResult::LOSEANDCONVERT)
           cultist=@dealer.nextCultist
-          CultistPlayer.new(self, cultist)
+          CultistPlayer.new(@currentPlayer, cultist)
       end
       @dealer.giveMonsterBack(@currentMonster)
       return resultado
