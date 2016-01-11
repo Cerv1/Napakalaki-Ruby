@@ -5,6 +5,9 @@ require 'singleton'
 require_relative 'Prize.rb'
 require_relative 'Monster.rb'
 require_relative 'BadConsequence.rb'
+require_relative 'NumericBadConsequence.rb'
+require_relative 'SpecificBadConsequence.rb'
+require_relative 'DeathBadConsequence.rb'
 require_relative 'TreasureKind.rb'
 require_relative 'Treasure.rb'
 require_relative 'Cultist.rb'
@@ -17,7 +20,7 @@ class CardDealer
 
   attr_reader :unusedTreasures, :usedTreasures, :unusedMonsters, :usedMonsters, :unusedCultists
  
-  def initialize ()
+  def initialize()
     @unusedTreasures=Array.new
     @usedTreasures=Array.new
     @unusedMonsters=Array.new
