@@ -64,7 +64,7 @@ class BadConsequence
           else
               n_ocultos=h.size
           end
-          mal_rollo=BadConsequence.newLevelNumberOfTreasures(@text, 0, n_visibles, n_ocultos)
+          mal_rollo=NumericBadConsequence.new(@text, 0, n_visibles, n_ocultos)
       else
           if(@specificHiddenTreasures != nil)
               adHidList = Array.new
@@ -89,7 +89,7 @@ class BadConsequence
                   adHidList=adHidList+[tkind]*[hKind.select{|t| t==tkind}.size, @specificHiddenTreasures.select{|t| t==tkind}.size].min
              end
           end
-          mal_rollo = BadConsequence.newLevelSpecificTreasures(@text,0,adVisList, adHidList)
+          mal_rollo = SpecificBadConsequence.new(@text,0,adVisList, adHidList)
       end
       return mal_rollo
   end
