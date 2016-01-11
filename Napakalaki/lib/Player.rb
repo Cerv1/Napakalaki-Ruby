@@ -64,13 +64,13 @@ class Player
     return @dead
   end
 
-   def getVisibleTreasures
-       return  @visibleTreasures
-   end
+  def getVisibleTreasures
+    return @visibleTreasures
+  end
    
-   def getHiddenTreasures
-       return @hiddenTreasures
-   end
+  def getHiddenTreasures
+    return @hiddenTreasures
+  end
 
   def makeTreasureVisible(t)
     canI=canMakeTreasureVisible(t)
@@ -312,10 +312,10 @@ private
   end
   
   def canYouGiveMeATreasure
-  tienetesoros=true
-  if(@visibleTreasures.empty? && @hiddenTreasures.empty?)
-    tienetesoros=false
-  end
+    tienetesoros=true
+    if(@visibleTreasures.empty? && @hiddenTreasures.empty?)
+      tienetesoros=false
+    end
     return tienetesoros
   end
   
