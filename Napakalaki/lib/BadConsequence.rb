@@ -22,10 +22,6 @@ class BadConsequence
       @specificVisibleTreasures=someSpecificVisibleTreasures
   end
 
-  def BadConsequence.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    new(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
-  end
-  
   def BadConsequence.newDeath(aText)
     new(aText, 0, -1, -1, Array.new, Array.new , true)
   end
