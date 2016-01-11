@@ -133,7 +133,7 @@ private
           end
         end
       end
-      @players[i].setEnemy(@players[pos])
+      @players[i].setEnemy(@players.at(pos))
       i+=1
     end
   end
