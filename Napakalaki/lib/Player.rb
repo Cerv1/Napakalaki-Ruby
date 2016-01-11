@@ -104,7 +104,7 @@ class Player
     if(@pendingBadConsequence==nil)
       return true
     end
-    if(@pendingBadConsequence.isEmpty && @hiddenTreasures.size <= 4)
+    if(@pendingBadConsequence.isEmpty && (@hiddenTreasures.size <= 4))
       return true
     else
       return false
