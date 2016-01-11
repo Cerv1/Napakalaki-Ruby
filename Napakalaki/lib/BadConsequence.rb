@@ -22,10 +22,6 @@ class BadConsequence
       @specificVisibleTreasures=someSpecificVisibleTreasures
   end
 
-  def BadConsequence.newDeath(aText)
-    new(aText, 0, -1, -1, Array.new, Array.new , true)
-  end
-  
   def isEmpty
     empty=false
     if(@nHiddenTreasures == -1)
