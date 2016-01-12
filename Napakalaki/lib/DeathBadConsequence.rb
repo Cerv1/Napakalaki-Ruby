@@ -4,10 +4,13 @@ module NapakalakiGame
   
   class DeathBadConsequence < NumericBadConsequence
     
+    attr_accessor :death
+    
     def initialize(aText)
-      BadConsequence.new(aText, 0, 0, 0, Array.new, Array.new, true)
+      super(aText, 0, -1, -1)
+      @death=true
     end
-  
+
   end
   
 end

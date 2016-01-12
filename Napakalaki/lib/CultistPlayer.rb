@@ -31,8 +31,8 @@ class CultistPlayer < Player
     protected 
     
     def getCombatLevel
-        combat_level=(self.level+(0.2*self.level))
-        combat_level+=c.getGainedLevels*@@totalCultistPlayers
+        combat_level = @level+(0.2*@level)
+        combat_level = combat_level + @c.getGainedLevels*@@totalCultistPlayers
         return combat_level.to_i
     end
     

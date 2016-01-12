@@ -54,7 +54,7 @@ class CardDealer
   
   def nextCultist
       if(!@unusedCultists.empty?)
-         nextcultist=@unusedCultists[0]
+        nextcultist=@unusedCultists[0]
         @unusedCultists.delete_at(0)
         return nextcultist
       end
@@ -233,7 +233,7 @@ def initMonsterCardDeck
     @unusedMonsters << Monster.new("Dameargo ", 1, bc ,pr, 0)
 
     pr = Prize.new(1, 1)
-    bc = NumericBadConsequence.new("Da mucho asquito. Pierdes 3 niveles. ", 3, 0, 0)
+    bc = BadConsequence.new("Da mucho asquito. Pierdes 3 niveles. ", 3, 0, 0, Array.new, Array.new, false)
     @unusedMonsters << Monster.new("Pollipólipo volante ", 3, bc ,pr, 0)
 
     pr = Prize.new(3, 1)

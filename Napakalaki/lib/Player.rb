@@ -84,7 +84,7 @@ class Player
       if(@visibleTreasures != nil)
          @visibleTreasures.delete(t)
       if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
-          @pendingBadConsequence.substractVisibleTreasures(t)
+          @pendingBadConsequence.substractVisibleTreasure(t)
       end
       dieIfNoTreasures
       end
@@ -94,7 +94,7 @@ class Player
       if(@hiddenTreasures != nil)
         @hiddenTreasures.delete(t)
       if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
-          @pendingBadConsequence.substractHiddenTreasures(t)
+        @pendingBadConsequence.substractHiddenTreasure(t)
       end
       dieIfNoTreasures
       end
@@ -198,7 +198,7 @@ private
   end
   
   def decrementLevels(i)
-    if(@level-i>=1)
+    if((@level-i)>=1)
       @level=@level-i
     else
       @level=1 
