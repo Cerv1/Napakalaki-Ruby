@@ -4,39 +4,28 @@ module NapakalakiGame
   
   class SpecificBadConsequence < BadConsequence
     
+    attr_accessor :specificHiddenTreasures, :specificVisibleTreasures
+    
     def initialize(aText, someLevels, someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-      super(aText, someLevels, -1, -1,someSpecificHiddenTreasures, someSpecificVisibleTreasures, false)
+      super(aText, someLevels)
+      @specificVisibleTreasures=someSpecificVisibleTreasures
+      @specificHiddenTreasures=someSpecificHiddenTreasures
     end
     
     def isEmpty
-      empty=false
-      if(@nHiddenTreasures == -1)
-        if(@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? && @level==0 && @death==false)
-          empty=true
-        end
-      else
-        if(@level==0 && @death==false)
-          empty=true
-        end
-      end
-      return empty
+      return (@specificHiddenTreasures.empty? && @specificVisibleTreasures.empty? )
     end
 
-
     def substractHiddenTreasure(t)
-      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
         unless (@specificHiddenTreasures.empty?)
           @specificHiddenTreasures.delete(t)
         end
-      end
     end
 
     def substractVisibleTreasure(t)
-      if(@nHiddenTreasures == -1 && @nVisibleTreasures == -1)
         unless (@specificVisibleTreasures.empty?)
           @specificVisibleTreasures.delete(t)
         end
-      end
     end
     
     def adjustToFitTreasureLists(v,h)

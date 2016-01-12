@@ -4,20 +4,19 @@ module NapakalakiGame
   
   class NumericBadConsequence < BadConsequence
     
+    attr_accessor :nHiddenTreasures, :nVisibleTreasures
+      
     def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures)
-      super(aText, someLevels, someVisibleTreasures, someHiddenTreasures, Array.new, Array.new, false)
+      super(aText, someLevels)
+      @nHiddenTreasures=someHiddenTreasures
+      @nVisibleTreasures=someVisibleTreasures
     end
     
     def isEmpty
-      empty=false
-      if(@nHiddenTreasures==0 && @nVisibleTreasures==0)
-        empty=true
-      end
-      return empty
+      return (@nHiddenTreasures==0 && @nVisibleTreasures==0)
     end
     
     def adjustToFitTreasureLists(v,h)
-  
         if(v.size > @nVisibleTreasures)
           n_visibles=@nVisibleTreasures
         else

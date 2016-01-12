@@ -7,10 +7,14 @@ module NapakalakiGame
     attr_accessor :death
     
     def initialize(aText)
-      super(aText, 0, -1, -1)
+      super(aText, 0)
       @death=true
     end
-
+    
+    def isEmpty
+        return @death
+    end
+    
   end
   
 end
