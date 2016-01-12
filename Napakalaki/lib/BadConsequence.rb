@@ -11,15 +11,9 @@ class BadConsequence
   attr_accessor:text, :level,  :nVisibleTreasures, :nHiddenTreasures, :death,
                :specificHiddenTreasures, :specificVisibleTreasures
   
-  def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
-                someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
+  def initialize(aText, someLevels)
       @text=aText
       @level=someLevels
-      @nVisibleTreasures=someVisibleTreasures
-      @nHiddenTreasures=someHiddenTreasures
-      @death=death
-      @specificHiddenTreasures=someSpecificHiddenTreasures
-      @specificVisibleTreasures=someSpecificVisibleTreasures
   end
 
   def to_s
