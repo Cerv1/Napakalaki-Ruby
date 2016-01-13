@@ -86,7 +86,7 @@ class Player
       if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
           @pendingBadConsequence.substractVisibleTreasure(t)
       end
-      dieIfNoTreasures
+      dieIfNoTreasures()
       end
   end
 
@@ -96,7 +96,7 @@ class Player
       if(@pendingBadConsequence!=nil && !@pendingBadConsequence.isEmpty)
         @pendingBadConsequence.substractHiddenTreasure(t)
       end
-      dieIfNoTreasures
+      dieIfNoTreasures()
       end
   end
 
@@ -133,7 +133,7 @@ class Player
 
   def stealTreasure
      canI=canISteal
-     canYou = @enemy.CanYouGiveMeATreasure
+     canYou = @enemy.CanYouGiveMeATreasure()
      if(canI && canYou)
          treasure=@enemy.giveMeATreasure
          @hiddenTreasures << treasure
@@ -298,7 +298,7 @@ private
   end
       
   def dieIfNoTreasures
-    if(hiddenTreasures.empty? && visibleTreasures.empty?)
+    if(@hiddenTreasures.empty? && @visibleTreasures.empty?)
       @dead=true
     end
   end
