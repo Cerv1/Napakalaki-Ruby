@@ -40,6 +40,7 @@ class GameTester
         end while (command != Command::Exit && command != Command::Combat)
         if (command == Command::Combat) then
           combatResult = @game.developCombat()
+          currentPlayer = @game.getCurrentPlayer()
           case combatResult
             when NapakalakiGame::CombatResult::WINGAME then 
               puts "\n\n       " + currentPlayer.getName()
